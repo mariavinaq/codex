@@ -19,7 +19,8 @@ Codex aims to fill a perceived gap in the global developer community by offering
 
 ### Features
 
-- Main feed where users can scroll through posts of latest code snippets shared by other users. By default, the posts shown will be a mix of topics/functions.
+- Main feed where users can scroll through posts of latest code snippets shared by other users
+  - By default, the posts shown will be a mix of topics/functions.
   - This will have an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
   - The feed can be sorted by newest or most popular (by likes)
 - Each post in the feed will contain:
