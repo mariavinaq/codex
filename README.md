@@ -50,6 +50,9 @@ Codex aims to fill a perceived gap in the global developer community by offering
 - Node.js
 - Express
 - MySQL
+- Netlify
+- Heroku
+- JawsDB
 - Firebase (for storing media files)
 
 ### APIs
