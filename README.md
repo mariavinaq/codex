@@ -70,6 +70,7 @@ No external APIs will be used.
 ### Wireframe (Sketches)
 
 [Feed](https://wireframe.cc/bDiAQR)
+[Individual Post](https://wireframe.cc/uFSz1O)
 
 ### Endpoints
 
