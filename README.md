@@ -54,7 +54,6 @@ Codex aims to fill a perceived gap in the global developer community by offering
 - Netlify
 - Heroku
 - JawsDB
-- Firebase (for storing media files)
 
 ### APIs
 
@@ -127,7 +126,7 @@ Post body:
 {
     "author": "Isaiah Teran",
     "title": "Three dots loading html animation",
-    "media": (firebase file url),
+    "media": "...",
     "html": "...",
     "css": "...",
     "js": "..."
@@ -141,7 +140,7 @@ Response:
     "author": "Isaiah Teran",
     "timestamp": 1729063825,
     "title": "Three dots loading html animation",
-    "media": (firebase file url),
+    "media": "...",
     "html": "...",
     "css": "...",
     "js": "..."
@@ -177,7 +176,8 @@ Response:
     "author": "Isaiah Teran",
     "timestamp": 1729063825,
     "title": "Three dots loading html animation",
-    "media": (firebase file url),
+    "media": "...",
+    "description": "...",
     "html": "...",
     "css": "...",
     "js": "...",
