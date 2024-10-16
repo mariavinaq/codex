@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Codex** is a feed-based platform where developers can discover, preview, and share reusable snippets of code. The name is an ode to "codex", which is the historical term for "book with pages" that replaced srolls as primary modes for sharing knowledge (interestingly, it contains the word "code" which is fitting for this project!).
+**Codex** is a feed-based platform where developers can discover, preview, and share reusable snippets of code. The name is an ode to "codex", which is the historical term for "book with pages" that replaced scrolls as primary modes for sharing knowledge (interestingly, it contains the word "code" which is fitting for this project!).
 
 ### Problem Space
 
