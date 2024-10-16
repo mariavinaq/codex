@@ -31,6 +31,7 @@ Codex aims to fill a perceived gap in the global developer community by offering
   - save/bookmark function
 - When a post is clicked, additional information will be shown, such as:
   -  code for HTML, CSS, and/or JS that the user can easily copy to the clipboard
+  -  description (if needed) provided by author
   -  the post comments and ability to post a comment
   -  Note: the post does not provide a live preview of the code (such as that of CodePen), and it is up to the author to provide their own image/screenshot or video of the code output
 - When a user profile is clicked, it will show some user information and bio, and a feed of posts that are authored by that user
@@ -106,6 +107,7 @@ Response:
     "timestamp": 1729063825,
     "title": "Three dots loading html animation",
     "media": (firebase file url),
+    "description": "...",
     "html": "...",
     "css": "...",
     "js": "...",
