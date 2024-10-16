@@ -67,6 +67,10 @@ No external APIs will be used.
 - Submit post
 - Saved posts
 
+### Wireframe (Sketches)
+
+[Feed](https://wireframe.cc/bDiAQR)
+
 ### Endpoints
 
 **GET /posts**
