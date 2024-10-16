@@ -67,7 +67,9 @@ No external APIs will be used.
 - Submit post
 - Saved posts
 
-### Wireframe (Sketches)
+### Wireframes
+
+Unstyled sketches:
 
 [Feed](https://wireframe.cc/bDiAQR)
 
