@@ -117,6 +117,7 @@ Post body:
 {
     "author": "Isaiah Teran",
     "title": "Three dots loading html animation",
+    "media": (firebase file url),
     "html": "...",
     "css": "...",
     "js": "..."
