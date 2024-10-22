@@ -1,0 +1,19 @@
+@use './mixins.scss' as *;
+@use './variables.scss' as *;
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1.5rem;
+}

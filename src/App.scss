@@ -1,0 +1,11 @@
+@use './styles/partials/global.scss' as *;
+
+:root {
+  background-color: lightgrey;
+}
+
+.wrapper {
+  background-color: white;
+  max-width: 1280px;
+  margin: 0 auto;
+}
