@@ -9,6 +9,7 @@
     gap: 1.25rem;
     width: max-content;
     margin: 0 auto;
+    padding: 2rem 0;
 
     @include small-device {
         max-height: 320rem;
