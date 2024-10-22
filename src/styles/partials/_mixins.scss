@@ -1,7 +1,19 @@
 @use './variables.scss' as *;
 
+@mixin small-device {
+    @media screen and (min-width: $small-device-breakpoint) {
+        @content;
+    }
+}
+
 @mixin tablet {
     @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin small-desktop {
+    @media screen and (min-width: $small-desktop-breakpoint) {
         @content;
     }
 }

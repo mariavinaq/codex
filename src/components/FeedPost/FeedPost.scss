@@ -1,0 +1,37 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.feed-post {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    gap: 1rem;
+    
+    &__header {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__username {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    &__avatar {
+        width: 2rem;
+        margin-right: 1rem;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        cursor: pointer;
+    }
+
+    &__media-container {
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -1,2 +1,70 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+    @include tablet {
+        padding: 2rem;
+    }
+
+    @include desktop {
+        padding: 3rem;
+    }
+
+    &__logo-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__logo-icon {
+        width: 2rem;
+        margin-right: 0.5rem;
+
+        @include tablet {
+            width: 3rem;
+            margin-right: 1rem;
+        }
+    }
+
+    &__logo-title {
+        @include tablet {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    }
+
+    &__user-pages {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__bookmark {
+        width: 2rem;
+        cursor: pointer;
+
+        @include tablet {
+            width: 3rem;
+        }
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__avatar {
+        width: 2rem;
+        margin-right: 1rem;
+
+        @include tablet {
+            width: 3rem;
+        }
+    }
+}

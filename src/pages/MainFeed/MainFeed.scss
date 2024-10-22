@@ -1,2 +1,46 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.main-feed {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    width: max-content;
+    margin: 0 auto;
+
+    @include small-device {
+        max-height: 320rem;
+    }
+
+    @include tablet {
+        max-height: 220rem;
+    }
+
+    @include small-desktop {
+        max-height: 140rem;
+    }
+
+    @include desktop {
+        max-height: 120rem;
+    }
+
+    &__add-button {
+        position: fixed;
+        bottom: 3rem;
+        right: 3rem;
+        padding: 1rem;
+        cursor: pointer;
+
+        @include tablet {
+            bottom: 5rem;
+            right: 5rem;
+        }
+
+        @include desktop {
+            right: unset;
+            transform: translateX(1200%);
+        }
+    }
+}
