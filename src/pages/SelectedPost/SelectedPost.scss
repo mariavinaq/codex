@@ -8,6 +8,25 @@
     margin: 0 auto;
     padding: 2rem 1rem;
 
+    &__main {
+        @include tablet {
+            display: flex;
+            gap: 2rem;
+        }
+    }
+
+    &__codes {
+        @include tablet {
+            flex: 1;
+        }
+    }
+
+    &__more {
+        @include tablet {
+            width: 35%;
+        }
+    }
+
     &__header {
         display: flex;
         align-items: center;
@@ -26,6 +45,12 @@
 
     &__title {
         font-size: 2rem;
+    }
+
+    &__codes {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     &__editor {
