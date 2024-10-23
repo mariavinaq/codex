@@ -1,2 +1,86 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.submit-post {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__form-title {
+        margin-bottom: 0.5rem;
+    }
+
+    &__codes {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @include tablet {
+            flex: 1;
+        }
+    }
+
+    &__editor {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__editor-code {
+        height: 20rem;
+        border: 2px solid grey;
+        padding: 0.5rem;
+        resize: none;
+
+        &--preview {
+            height: 30rem;
+        }
+    }
+
+    &__form-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        @include tablet {
+            width: 35%;
+        }
+    }
+
+    &__form-detail {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__form-input {
+        height: 3rem;
+        border: 2px solid grey;
+        padding: 0.5rem;
+
+        &--description {
+            height: 9rem;
+            resize: none;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__post-button {
+        width: 50%;
+        padding: 1rem;
+    }
+}
