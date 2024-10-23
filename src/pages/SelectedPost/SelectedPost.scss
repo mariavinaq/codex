@@ -1,2 +1,42 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.selected-post {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    &__title {
+        font-size: 2rem;
+    }
+
+    &__editor {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__editor-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    &__copy-code {
+        width: 2rem;
+        margin-left: 0.5rem;
+        cursor: pointer;
+    }
+
+    &__editor-code {
+        height: 20rem;
+        border: 2px solid black;
+        padding: 0.5rem;
+        resize: none;
+
+        &--preview {
+            height: 30rem;
+        }
+    }
+}
