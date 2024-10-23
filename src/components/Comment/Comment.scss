@@ -1,0 +1,33 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comment {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__avatar {
+        width: 2rem;
+        margin-right: 1rem;
+    }
+
+    &__timestamp {
+        margin-left: 0.5rem;
+        color: gray;
+    }
+
+    &__comment {
+        margin-top: 1rem;
+        margin-left: 3rem;
+    }
+}

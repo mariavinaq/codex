@@ -1,0 +1,34 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.comments {
+    padding: 1rem;
+
+    &__title {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    &__form {
+        display: flex;
+        padding: 1rem;
+        border: 2px solid black;
+    }
+
+    &__input {
+        flex: 1;
+        border: none;
+        outline: none;
+        resize: none;
+    }
+
+    &__button {
+        border: none;
+        margin-left: 0.5rem;
+        background-color: transparent;
+    }
+
+    &__button-icon {
+        width: 2rem;
+    }
+}
