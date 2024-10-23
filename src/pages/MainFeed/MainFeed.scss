@@ -6,9 +6,8 @@
     position: relative;
     flex-direction: column;
     flex-wrap: wrap;
+    align-content: center;
     gap: 1.25rem;
-    width: max-content;
-    margin: 0 auto;
     padding: 2rem 0;
 
     @include small-device {
