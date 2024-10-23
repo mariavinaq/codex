@@ -23,7 +23,7 @@ const SubmitPost = () => {
             <form className='submit-post__form'>
                 <div className='submit-post__codes'>
                     <div className='submit-post__editor submit-post__editor--preview'>
-                    <label className='submit-post__form-title' htmlFor='preview'>Preview</label>
+                    <label className='submit-post__form-title'>Preview</label>
                         <iframe id='preview' className='submit-post__editor-code submit-post__editor-code--preview' srcDoc={preview}></iframe>
                     </div>
                     <div className='submit-post__editor'>

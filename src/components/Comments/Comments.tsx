@@ -7,7 +7,7 @@ const Comments = () => {
         <div className='comments'>
             <h2 className='comments__title'>Comments</h2>
             <form className='comments__form'>
-                <textarea className='comments__input'></textarea>
+                <textarea className='comments__input' name='comment'></textarea>
                 <button className='comments__button' type='submit'>
                     <img className='comments__button-icon' src={comment} />
                 </button>
