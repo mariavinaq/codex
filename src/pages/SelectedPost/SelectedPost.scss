@@ -8,6 +8,22 @@
     margin: 0 auto;
     padding: 2rem 1rem;
 
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__avatar {
+        width: 2rem;
+        margin-right: 1rem;
+    }
+
     &__title {
         font-size: 2rem;
     }
@@ -37,6 +53,27 @@
 
         &--preview {
             height: 30rem;
+        }
+    }
+
+    &__actions {
+        padding: 1rem 0;
+        display: flex;
+        gap: 1rem;
+    }
+
+    &__action-button {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        cursor: pointer;
+    }
+
+    &__action-icon {
+        width: 2rem;
+
+        &--comments {
+            margin-right: 0.5rem;
         }
     }
 }
