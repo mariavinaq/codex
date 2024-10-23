@@ -17,7 +17,7 @@ button:hover {
     background-color: yellow;
 }`;
     const jsSample = `function changeColor(){
-        document.getElementById("button").style.color = "blue"
+    document.getElementById("button").style.color = "blue"
 }`;
     const [htmlCode, setHtmlCode] = useState(htmlSample);
     const [cssCode, setCssCode] = useState(cssSample);
