@@ -3,9 +3,10 @@ import comment from '../../assets/images/comment.png';
 import './Comments.scss';
 
 interface Comment {
+    id: number;
     comment_username: string;
     comment_avatar: string;
-    timestamp: number;
+    timestamp: Date;
     comment: string;
 }
 
@@ -24,7 +25,7 @@ const Comments: React.FC<CommentsProps> = ({ comments }) => {
                 </button>
             </form>
             <div className='comments__list'>
-                {comments.map((comment) => <Comment comment={comment} />)}
+                {comments.map((comment) => <Comment comment={comment} key={comment.id} />)}
             </div>
         </div>
     );

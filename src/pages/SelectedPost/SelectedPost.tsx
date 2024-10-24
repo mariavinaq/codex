@@ -7,11 +7,13 @@ import './SelectedPost.scss';
 import { useParams } from 'react-router-dom';
 import { getPost } from '../../services/codex-api';
 import Loader from '../../components/Loader/Loader';
+import agoTimestamp from '../../utils/utils';
 
 interface Comment {
+    id: number;
     comment_username: string;
     comment_avatar: string;
-    timestamp: number;
+    timestamp: Date;
     comment: string;
 }
 
@@ -24,7 +26,7 @@ interface Post {
     css: string;
     js: string;
     likes: number;
-    timestamp: string;
+    timestamp: Date;
     post_username: string;
     post_avatar: string;
     comments: Comment[];
@@ -92,6 +94,7 @@ const SelectedPost = () => {
                     <div className='selected-post__profile'>
                         <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.post_avatar}`} />
                         <p className='selected-post__username'>{selectedPost.post_username}</p>
+                        <time className='comment__timestamp'>• {agoTimestamp(selectedPost.timestamp)}</time>
                     </div>
                     <h1 className='selected-post__title'>{selectedPost.title}</h1>
                     <div className='selected-post__main'>

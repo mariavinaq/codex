@@ -19,7 +19,6 @@ const MainFeed = () => {
     useEffect(() => {
         const retrievePosts = async () => {
             const posts = await getPosts()
-            console.log(posts)
             if (posts) {
                 setPostsList(posts);
             }
