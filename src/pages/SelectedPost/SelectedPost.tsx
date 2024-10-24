@@ -5,7 +5,7 @@ import toBookmark from '../../assets/images/to-bookmark.png';
 import Comments from '../../components/Comments/Comments';
 import './SelectedPost.scss';
 import { useParams } from 'react-router-dom';
-import { getPost } from '../../services/codex-api';
+import { getComments, getPost, postComment } from '../../services/codex-api';
 import Loader from '../../components/Loader/Loader';
 import agoTimestamp from '../../utils/utils';
 
@@ -29,7 +29,6 @@ interface Post {
     timestamp: Date;
     post_username: string;
     post_avatar: string;
-    comments: Comment[];
 }
 
 const SelectedPost = () => {
@@ -42,6 +41,8 @@ const SelectedPost = () => {
     const [cssCode, setCssCode] = useState('');
     const [jsCode, setJsCode] = useState('');
     const [preview, setPreview] = useState('');
+    const [postComments, setPostComments] = useState<Comment[] | null>(null);
+    const [incomingComment, setIncomingComment] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -59,6 +60,18 @@ const SelectedPost = () => {
         };
         retrievePost();
     }, [params.postId]);
+
+    useEffect(() => {
+        const retrieveComments = async () => {
+            if (params.postId) {
+                const comments = await getComments(params.postId);
+                setPostComments(comments)
+            } else {
+                console.error("No postId provided");
+            }
+        };
+        retrieveComments();
+    }, [params.postId, incomingComment])
 
     useEffect(() => {
         const previewSetup = `
@@ -87,9 +100,25 @@ const SelectedPost = () => {
         };
     };
 
+    const submitComment = async (event: React.FormEvent<HTMLFormElement>) => {
+        if (params.postId) {
+            setIncomingComment(true);
+            const form = event.target as HTMLFormElement;
+            const newComment = {
+                comment: form.comment.value
+            };
+            const comment = await postComment(params.postId, newComment)
+            if(comment) {
+                setIncomingComment(false);
+            }
+        } else {
+            console.error("No postId provided");
+        };
+    }
+
     return (
         <>
-            {isLoading ? <Loader /> : selectedPost &&
+            {isLoading ? <Loader /> : selectedPost && postComments &&
                 <div className='selected-post'>
                     <div className='selected-post__profile'>
                         <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.post_avatar}`} />
@@ -150,14 +179,14 @@ const SelectedPost = () => {
                             <div className='selected-post__actions'>
                                 <button className='selected-post__action-button' onClick={handleShowComments}>
                                     <img className='selected-post__action-icon selected-post__action-icon--comments' src={comments} />
-                                    {selectedPost.comments.length}
+                                    {postComments.length}
                                 </button>
                                 <button className='selected-post__action-button'>
                                     <img className='selected-post__action-icon' src={toBookmark} />
                                 </button>
                             </div>
                             <div ref={scrollRef}>
-                                <Comments comments={selectedPost.comments} />
+                                <Comments comments={postComments} submitComment={submitComment} />
                             </div>
                         </div>
                     </div>

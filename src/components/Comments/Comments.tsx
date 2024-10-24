@@ -12,13 +12,21 @@ interface Comment {
 
 interface CommentsProps {
     comments: Comment[];
+    submitComment: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Comments: React.FC<CommentsProps> = ({ comments }) => {
+const Comments: React.FC<CommentsProps> = ({ comments, submitComment }) => {
+
+    const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        const form = event.target as HTMLFormElement;
+        event.preventDefault();
+        submitComment(event);
+        form.reset();
+    }
     return (
         <div className='comments'>
             <h2 className='comments__title'>Comments</h2>
-            <form className='comments__form'>
+            <form className='comments__form' onSubmit={(event) => handleOnSubmit(event)}>
                 <textarea className='comments__input' name='comment'></textarea>
                 <button className='comments__button' type='submit'>
                     <img className='comments__button-icon' src={comment} />
