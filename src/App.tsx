@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<MainFeed />}></Route>
             <Route path='/posts' element={<MainFeed />}></Route>
-            <Route path='/posts/:id' element={<SelectedPost />}></Route>
+            <Route path='/posts/:postId' element={<SelectedPost />}></Route>
             <Route path='/submit' element={<SubmitPost />}></Route>
           </Routes>
         </div>

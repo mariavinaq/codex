@@ -1,0 +1,44 @@
+import axios from 'axios';
+
+const baseUrl = import.meta.env.VITE_API_URL;
+
+const getPosts = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/posts`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for posts failed`);
+        } else {
+            console.error('Error occurred while fetching posts');
+        }
+    }
+};
+
+const getPost = async (postId: string) => {
+    try {
+        const response = await axios.get(`${baseUrl}/posts/${postId}`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for post failed`);
+        } else {
+            console.error('Error occurred while fetching post');
+        }
+    }
+};
+
+const getUsers = async () => {
+    try {
+        const response = await axios.get(`${baseUrl}/users`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for users failed`);
+        } else {
+            console.error('Error occurred while fetching users');
+        }
+    }
+};
+
+export { getPosts, getPost, getUsers };

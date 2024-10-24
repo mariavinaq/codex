@@ -6,6 +6,7 @@
     flex-direction: column;
     width: 20rem;
     gap: 1rem;
+    padding-bottom: 1rem;
     
     &__header {
         display: flex;
@@ -33,5 +34,9 @@
     &__media-container {
         display: flex;
         justify-content: center;
+    }
+
+    &__media {
+        width: 100%;
     }
 }

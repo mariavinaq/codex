@@ -1,0 +1,46 @@
+@use '../../styles/partials/mixins.scss' as *;
+
+.loader {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+
+    @include tablet {
+        gap: 0.75rem;
+        padding: 3rem 0;
+    }
+
+    @include desktop {
+        flex: 1;
+    }
+
+    &__dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: lightgrey;
+        opacity: 1;
+        animation: bounce 0.6s infinite alternate;
+
+        @include tablet {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+
+        &--2 {
+            animation-delay: 0.2s;
+        }
+
+        &--3 {
+            animation-delay: 0.4s;
+        }
+    }
+
+    @keyframes bounce {
+        100% {
+            opacity: 75%;
+            transform: translateY(1rem);
+        }
+    }
+}

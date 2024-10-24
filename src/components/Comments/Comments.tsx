@@ -2,7 +2,18 @@ import Comment from '../Comment/Comment';
 import comment from '../../assets/images/comment.png';
 import './Comments.scss';
 
-const Comments = () => {
+interface Comment {
+    comment_username: string;
+    comment_avatar: string;
+    timestamp: number;
+    comment: string;
+}
+
+interface CommentsProps {
+    comments: Comment[];
+}
+
+const Comments: React.FC<CommentsProps> = ({ comments }) => {
     return (
         <div className='comments'>
             <h2 className='comments__title'>Comments</h2>
@@ -13,9 +24,7 @@ const Comments = () => {
                 </button>
             </form>
             <div className='comments__list'>
-                <Comment />
-                <Comment />
-                <Comment />
+                {comments.map((comment) => <Comment comment={comment} />)}
             </div>
         </div>
     );

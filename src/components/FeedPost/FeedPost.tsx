@@ -1,30 +1,35 @@
 import { useNavigate } from 'react-router-dom';
-import avatar from '../../assets/images/avatar.png';
 import './FeedPost.scss';
 
 interface FeedPostProps {
-    img: string;
+    post: {
+        id: number,
+        username: number,
+        title: string,
+        thumbnail: string,
+        avatar: string
+    };
 }
 
-const FeedPost: React.FC<FeedPostProps> = ({ img }) => {
+const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
+    const baseUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
-    const placeholderId: number = 1;
 
     const handleClickPost = () => {
-        navigate(`/posts/${placeholderId}`)
+        navigate(`/posts/${post.id}`)
     };
 
     return (
         <div className='feed-post'>
             <div className='feed-post__header'>
-                <img className='feed-post__avatar' src={avatar} alt='user avatar' />
-                <p className='feed-post__username'>username</p>
+                <img className='feed-post__avatar' src={`${baseUrl}${post.avatar}`} alt='user avatar' />
+                <p className='feed-post__username'>{post.username}</p>
             </div>
             <div className='feed-post__main' onClick={handleClickPost}>
                 <div className='feed-post__media-container'>
-                    <img className='feed-post__media' src={img} />
+                    <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />
                 </div>
-                <p className='feed-post__title'>This is a sample title for this specific post, just for an example.</p>
+                <p className='feed-post__title'>{post.title}</p>
             </div>
         </div>
     );

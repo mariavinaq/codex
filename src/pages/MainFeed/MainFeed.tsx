@@ -1,39 +1,42 @@
 import { useNavigate } from 'react-router-dom';
 import FeedPost from '../../components/FeedPost/FeedPost';
-import img1 from '../../assets/images/200x150.png';
-import img2 from '../../assets/images/200x200.png';
-import img3 from '../../assets/images/200x250.png';
-import img4 from '../../assets/images/200x300.png';
 import './MainFeed.scss';
+import { useEffect, useState } from 'react';
+import { getPosts } from '../../services/codex-api.ts';
 
-const MainFeed: React.FC = () => {
+interface Post {
+    id: number,
+    username: number,
+    title: string,
+    thumbnail: string,
+    avatar: string,
+}
+
+const MainFeed = () => {
     const navigate = useNavigate();
+    const [postsList, setPostsList] = useState<Post[]>([]);
+
+    useEffect(() => {
+        const retrievePosts = async () => {
+            const posts = await getPosts()
+            console.log(posts)
+            if (posts) {
+                setPostsList(posts);
+            }
+        };
+        retrievePosts();
+    }, []);
 
     const handleOnClick = () => {
         navigate('/submit');
     };
-    
+
     return (
         <div className='main-feed'>
             <button className='main-feed__add-button' onClick={handleOnClick}>+ New Post</button>
-            <FeedPost img={img1} />
-            <FeedPost img={img2} />
-            <FeedPost img={img3} />
-            <FeedPost img={img4} />
-            <FeedPost img={img1} />
-            <FeedPost img={img3} />
-            <FeedPost img={img3} />
-            <FeedPost img={img3} />
-            <FeedPost img={img4} />
-            <FeedPost img={img2} />
-            <FeedPost img={img4} />
-            <FeedPost img={img1} />
-            <FeedPost img={img2} />
-            <FeedPost img={img3} />
-            <FeedPost img={img4} />
-            <FeedPost img={img3} />
-            <FeedPost img={img4} />
-            <FeedPost img={img1} />
+            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
+            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
+            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
         </div>
     );
 };
