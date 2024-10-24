@@ -2,6 +2,15 @@ import axios from 'axios';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
+// interface Form {
+//     thumbnail: string;
+//     title: string;
+//     description: string;
+//     html: string;
+//     css: string;
+//     js: string;
+// }
+
 const getPosts = async () => {
     try {
         const response = await axios.get(`${baseUrl}/posts`);
@@ -28,6 +37,19 @@ const getPost = async (postId: string) => {
     }
 };
 
+const postPost = async (formData: FormData) => {
+    try {
+        const response = await axios.post(`${baseUrl}/posts`, formData, { headers: {'Content-Type': 'multipart/form-data'}});
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for post failed`);
+        } else {
+            console.error('Error occurred while fetching post');
+        }
+    }
+};
+
 const getUsers = async () => {
     try {
         const response = await axios.get(`${baseUrl}/users`);
@@ -41,4 +63,4 @@ const getUsers = async () => {
     }
 };
 
-export { getPosts, getPost, getUsers };
+export { getPosts, getPost, postPost, getUsers };
