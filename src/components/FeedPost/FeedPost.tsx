@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { FeedPostProps } from '../../interfaces';
 import { agoTimestamp } from '../../utils/utils';
+import { baseUrl } from '../../services/codex-api';
 import './FeedPost.scss';
 
 const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
-    const baseUrl = import.meta.env.VITE_API_URL;
     const navigate = useNavigate();
+    const mediaExt = post.thumbnail.split('.').pop() || '';
+    const videoExt = ['mp4', 'avi', 'mov', 'webm', 'mkv'];
+    const useVideoTag = videoExt.includes(mediaExt.toLowerCase());
 
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
@@ -20,7 +23,10 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
             </div>
             <div className='feed-post__main' onClick={handleClickPost}>
                 <div className='feed-post__media-container'>
-                    <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />
+                    {
+                        useVideoTag ? <video className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} autoPlay muted loop></video>
+                        : <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />                     
+                    }
                 </div>
                 <p className='feed-post__title'>{post.title}</p>
             </div>

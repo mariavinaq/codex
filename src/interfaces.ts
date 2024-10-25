@@ -37,10 +37,14 @@ interface NewComment {
     comment: string;
 }
 
+interface CommentProps {
+    comment: Comment;
+}
+
 interface CommentsProps {
     comments: Comment[];
     submitComment: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
 
-export type { Post, SimplePost, FeedPostProps, Comment, NewComment, CommentsProps };
+export type { Post, SimplePost, FeedPostProps, Comment, NewComment, CommentProps, CommentsProps };

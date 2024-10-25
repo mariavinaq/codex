@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getComments, getPost, postComment } from '../../services/codex-api';
+import { baseUrl, getComments, getPost, postComment } from '../../services/codex-api';
 import { agoTimestamp } from '../../utils/utils';
 import { Post, Comment } from '../../interfaces';
 import Loader from '../../components/Loader/Loader';
@@ -11,7 +11,6 @@ import toBookmark from '../../assets/images/to-bookmark.png';
 import './SelectedPost.scss';
 
 const SelectedPost = () => {
-    const baseUrl = import.meta.env.VITE_API_URL;
     const params = useParams<{ postId: string }>();
     const scrollRef = useRef<HTMLDivElement | null>(null);
     const [isLoading, setIsLoading] = useState(false);

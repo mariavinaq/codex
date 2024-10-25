@@ -1,18 +1,9 @@
+import { baseUrl } from '../../services/codex-api';
 import { agoTimestamp } from '../../utils/utils';
+import { CommentProps } from '../../interfaces';
 import './Comment.scss';
 
-interface CommentProps {
-    comment: {
-        comment_username: string;
-        comment_avatar: string;
-        timestamp: Date;
-        comment: string;
-    }
-}
-
 const Comment: React.FC<CommentProps> = ({ comment }) => {
-    const baseUrl = import.meta.env.VITE_API_URL;
-
     return (
         <div className='comment'>
             <div className='comment__header'>

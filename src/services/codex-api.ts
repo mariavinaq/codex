@@ -81,4 +81,4 @@ const getUsers = async () => {
     }
 };
 
-export { getPosts, getPost, postPost, getComments, postComment, getUsers };
+export { baseUrl, getPosts, getPost, postPost, getComments, postComment, getUsers };
