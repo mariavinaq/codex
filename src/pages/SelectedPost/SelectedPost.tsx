@@ -47,9 +47,7 @@ const SelectedPost = () => {
                     const sortedComments = comments.sort((a: Comment, b: Comment) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
                     setPostComments(sortedComments)
                 }
-            } else {
-                console.error("No postId provided");
-            }
+            } 
         };
         retrieveComments();
     }, [params.postId, incomingComment])

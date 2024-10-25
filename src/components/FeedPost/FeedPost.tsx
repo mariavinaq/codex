@@ -1,17 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import { FeedPostProps } from '../../interfaces';
 import { agoTimestamp } from '../../utils/utils';
-import { baseUrl, postBookmark } from '../../services/codex-api';
+import { baseUrl, getComments, postBookmark } from '../../services/codex-api';
 import like from '../../assets/images/like.png';
 import comments from '../../assets/images/comments.png';
 import toBookmark from '../../assets/images/to-bookmark.png';
 import './FeedPost.scss';
+import { useEffect, useState } from 'react';
 
 const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     const navigate = useNavigate();
     const mediaExt = post.thumbnail.split('.').pop() || '';
     const videoExt = ['mp4', 'avi', 'mov', 'webm', 'mkv'];
     const useVideoTag = videoExt.includes(mediaExt.toLowerCase());
+    const [commentsCount, setCommentsCount] = useState();
 
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
@@ -23,6 +25,18 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
         };
         await postBookmark(reference);
     };
+
+    useEffect(() => {
+        const retrieveComments = async () => {
+            if (post.id) {
+                const comments = await getComments(`${post.id}`);
+                if (comments) {
+                    setCommentsCount(comments.length)
+                }
+            } 
+        };
+        retrieveComments();
+    }, [post.id])
 
     return (
         <div className='feed-post'>
@@ -40,10 +54,18 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
                 </div>
                 <p className='feed-post__title'>{post.title}</p>
             </div>
-            <div>
-                <img className='feed-post__action-icon' src={like} />
-                <img className='feed-post__action-icon' src={comments} />
-                <img className='feed-post__action-icon' src={toBookmark} onClick={handleBookmark} />
+            <div className='feed-post__actions'>
+                <div className='feed-post__action-container'>
+                    <img className='feed-post__action-icon' src={like} />
+                    <span>{post.likes}</span>
+                </div>
+                <div className='feed-post__action-container'>
+                    <img className='feed-post__action-icon' src={comments} />
+                    <span>{commentsCount}</span>
+                </div>
+                <div className='feed-post__action-container feed-post__action-container--bookmark'>
+                    <img className='feed-post__action-icon' src={toBookmark} onClick={handleBookmark} />
+                </div>
             </div>
         </div>
     );

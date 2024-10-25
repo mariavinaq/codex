@@ -18,6 +18,7 @@ interface SimplePost {
     username: number,
     title: string,
     thumbnail: string,
+    likes: number,
     avatar: string,
 }
 
