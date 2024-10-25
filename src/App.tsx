@@ -6,7 +6,6 @@ import SelectedPost from './pages/SelectedPost/SelectedPost'
 import './App.scss'
 
 function App() {
-
   return (
     <>
       <BrowserRouter>

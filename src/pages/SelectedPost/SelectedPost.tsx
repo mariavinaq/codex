@@ -1,35 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getComments, getPost, postComment } from '../../services/codex-api';
+import { agoTimestamp } from '../../utils/utils';
+import { Post, Comment } from '../../interfaces';
+import Loader from '../../components/Loader/Loader';
+import Comments from '../../components/Comments/Comments';
 import copy from '../../assets/images/copy.png';
 import comments from '../../assets/images/comments.png';
 import toBookmark from '../../assets/images/to-bookmark.png';
-import Comments from '../../components/Comments/Comments';
 import './SelectedPost.scss';
-import { useParams } from 'react-router-dom';
-import { getComments, getPost, postComment } from '../../services/codex-api';
-import Loader from '../../components/Loader/Loader';
-import agoTimestamp from '../../utils/utils';
-
-interface Comment {
-    id: number;
-    comment_username: string;
-    comment_avatar: string;
-    timestamp: Date;
-    comment: string;
-}
-
-interface Post {
-    id: number;
-    title: string;
-    description: string;
-    thumbnail: string;
-    html: string;
-    css: string;
-    js: string;
-    likes: number;
-    timestamp: Date;
-    post_username: string;
-    post_avatar: string;
-}
 
 const SelectedPost = () => {
     const baseUrl = import.meta.env.VITE_API_URL;
@@ -65,7 +44,10 @@ const SelectedPost = () => {
         const retrieveComments = async () => {
             if (params.postId) {
                 const comments = await getComments(params.postId);
-                setPostComments(comments)
+                if (comments) {
+                    const sortedComments = comments.sort((a: Comment, b: Comment) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+                    setPostComments(sortedComments)
+                }
             } else {
                 console.error("No postId provided");
             }
@@ -108,7 +90,7 @@ const SelectedPost = () => {
                 comment: form.comment.value
             };
             const comment = await postComment(params.postId, newComment)
-            if(comment) {
+            if (comment) {
                 setIncomingComment(false);
             }
         } else {
@@ -123,7 +105,7 @@ const SelectedPost = () => {
                     <div className='selected-post__profile'>
                         <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.post_avatar}`} />
                         <p className='selected-post__username'>{selectedPost.post_username}</p>
-                        <time className='comment__timestamp'>• {agoTimestamp(selectedPost.timestamp)}</time>
+                        <time className='selected-post__timestamp'>• {agoTimestamp(selectedPost.timestamp)}</time>
                     </div>
                     <h1 className='selected-post__title'>{selectedPost.title}</h1>
                     <div className='selected-post__main'>
@@ -186,7 +168,7 @@ const SelectedPost = () => {
                                 </button>
                             </div>
                             <div ref={scrollRef}>
-                                <Comments comments={postComments} submitComment={submitComment} />
+                                <Comments comments={(postComments)} submitComment={submitComment} />
                             </div>
                         </div>
                     </div>

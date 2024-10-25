@@ -1,26 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import FeedPost from '../../components/FeedPost/FeedPost';
-import './MainFeed.scss';
 import { useEffect, useState } from 'react';
 import { getPosts } from '../../services/codex-api.ts';
-
-interface Post {
-    id: number,
-    username: number,
-    title: string,
-    thumbnail: string,
-    avatar: string,
-}
+import { SimplePost } from '../../interfaces.ts';
+import FeedPost from '../../components/FeedPost/FeedPost';
+import './MainFeed.scss';
 
 const MainFeed = () => {
     const navigate = useNavigate();
-    const [postsList, setPostsList] = useState<Post[]>([]);
-
+    const [postsList, setPostsList] = useState<SimplePost[]>([]);
+    
     useEffect(() => {
         const retrievePosts = async () => {
             const posts = await getPosts()
             if (posts) {
-                setPostsList(posts);
+                const sortedPosts = posts.sort((a: SimplePost, b: SimplePost) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+                setPostsList(sortedPosts);
             }
         };
         retrievePosts();

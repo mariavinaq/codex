@@ -26,4 +26,4 @@ const agoTimestamp = (moment: Date) => {
     else {return 'Just now'};
 }; 
 
-export default agoTimestamp;
+export { agoTimestamp };

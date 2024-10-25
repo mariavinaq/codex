@@ -1,15 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { FeedPostProps } from '../../interfaces';
+import { agoTimestamp } from '../../utils/utils';
 import './FeedPost.scss';
-
-interface FeedPostProps {
-    post: {
-        id: number,
-        username: number,
-        title: string,
-        thumbnail: string,
-        avatar: string
-    };
-}
 
 const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     const baseUrl = import.meta.env.VITE_API_URL;
@@ -24,6 +16,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
             <div className='feed-post__header'>
                 <img className='feed-post__avatar' src={`${baseUrl}${post.avatar}`} alt='user avatar' />
                 <p className='feed-post__username'>{post.username}</p>
+                <time className='feed-post__timestamp'>• {agoTimestamp(post.timestamp)}</time>
             </div>
             <div className='feed-post__main' onClick={handleClickPost}>
                 <div className='feed-post__media-container'>

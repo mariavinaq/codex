@@ -1,22 +1,9 @@
-import Comment from '../Comment/Comment';
+import { CommentsProps } from '../../interfaces';
 import comment from '../../assets/images/comment.png';
+import Comment from '../Comment/Comment';
 import './Comments.scss';
 
-interface Comment {
-    id: number;
-    comment_username: string;
-    comment_avatar: string;
-    timestamp: Date;
-    comment: string;
-}
-
-interface CommentsProps {
-    comments: Comment[];
-    submitComment: (event: React.FormEvent<HTMLFormElement>) => void;
-}
-
 const Comments: React.FC<CommentsProps> = ({ comments, submitComment }) => {
-
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.target as HTMLFormElement;
         event.preventDefault();

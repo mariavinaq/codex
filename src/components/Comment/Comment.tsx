@@ -1,4 +1,4 @@
-import agoTimestamp from '../../utils/utils';
+import { agoTimestamp } from '../../utils/utils';
 import './Comment.scss';
 
 interface CommentProps {

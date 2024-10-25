@@ -1,10 +1,7 @@
 import axios from 'axios';
+import { NewComment } from '../interfaces';
 
 const baseUrl = import.meta.env.VITE_API_URL;
-
-interface NewComment {
-    comment: string;
-}
 
 const getPosts = async () => {
     try {
