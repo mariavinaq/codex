@@ -46,5 +46,9 @@ interface CommentsProps {
     submitComment: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
+interface Reference {
+    post_id: number;
+}
 
-export type { Post, SimplePost, FeedPostProps, Comment, NewComment, CommentProps, CommentsProps };
+
+export type { Post, SimplePost, FeedPostProps, Comment, NewComment, CommentProps, CommentsProps, Reference };

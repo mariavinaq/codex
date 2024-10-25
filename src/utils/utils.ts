@@ -10,20 +10,14 @@ const agoTimestamp = (moment: Date) => {
     const months = Math.floor(weeks / 4.345);
     const years = Math.floor(months / 12);
 
-    if (years > 1) { return `${years} years ago` } 
-    else if (years === 1) { return '1 year ago' }
-    else if (months > 1) { return `${months} months ago` }
-    else if (months === 1) { return '1 month ago' }
-    else if (weeks > 1) { return `${weeks} weeks ago` }
-    else if (weeks === 1) { return '1 week ago' }
-    else if (days > 1) { return `${days} days ago` }
-    else if (days === 1) { return 'Yesterday'}
-    else if (hours > 1) { return `${hours} hours ago` }
-    else if (hours === 1) { return '1 hour ago' }
-    else if (minutes > 1) { return `${minutes} minutes ago`}
-    else if (minutes === 1) {return '1 minute ago' }
-    else if (seconds > 1) { return `${seconds} seconds ago` }
-    else {return 'Just now'};
+    if (years >= 1) { return `${years}y` } 
+    else if (months >= 1) { return `${months}mo` }
+    else if (weeks >= 1) { return `${weeks}w` }
+    else if (days >= 1) { return `${days}d` }
+    else if (hours >= 1) { return `${hours}h` }
+    else if (minutes >= 1) { return `${minutes}m` }
+    else if (seconds >= 1) { return `${seconds}s` }
+    else {return '0s'};
 }; 
 
 export { agoTimestamp };

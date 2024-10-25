@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { NewComment } from '../interfaces';
+import { NewComment, Reference } from '../interfaces';
 
 const baseUrl = import.meta.env.VITE_API_URL;
 
@@ -68,6 +68,19 @@ const postComment = async (postId: string, newComment: NewComment) => {
     }
 };
 
+const postBookmark = async (reference: Reference) => {
+    try {
+        const response = await axios.post(`${baseUrl}/users/bookmarks`, reference);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: POST request for bookmark failed`);
+        } else {
+            console.error('Error occurred while adding bookmark');
+        }
+    }
+};
+
 const getUsers = async () => {
     try {
         const response = await axios.get(`${baseUrl}/users`);
@@ -81,4 +94,4 @@ const getUsers = async () => {
     }
 };
 
-export { baseUrl, getPosts, getPost, postPost, getComments, postComment, getUsers };
+export { baseUrl, getPosts, getPost, postPost, getComments, postComment, postBookmark, getUsers };

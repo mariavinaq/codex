@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { FeedPostProps } from '../../interfaces';
 import { agoTimestamp } from '../../utils/utils';
-import { baseUrl } from '../../services/codex-api';
+import { baseUrl, postBookmark } from '../../services/codex-api';
+import like from '../../assets/images/like.png';
+import comments from '../../assets/images/comments.png';
+import toBookmark from '../../assets/images/to-bookmark.png';
 import './FeedPost.scss';
 
 const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
@@ -12,6 +15,13 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
 
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
+    };
+
+    const handleBookmark = async () => {
+        const reference = {
+            post_id: post.id
+        };
+        await postBookmark(reference);
     };
 
     return (
@@ -25,10 +35,15 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
                 <div className='feed-post__media-container'>
                     {
                         useVideoTag ? <video className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} autoPlay muted loop></video>
-                        : <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />                     
+                            : <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />
                     }
                 </div>
                 <p className='feed-post__title'>{post.title}</p>
+            </div>
+            <div>
+                <img className='feed-post__action-icon' src={like} />
+                <img className='feed-post__action-icon' src={comments} />
+                <img className='feed-post__action-icon' src={toBookmark} onClick={handleBookmark} />
             </div>
         </div>
     );
