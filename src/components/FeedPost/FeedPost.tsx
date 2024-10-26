@@ -16,7 +16,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     const useVideoTag = videoExt.includes(mediaExt.toLowerCase());
     const [commentsCount, setCommentsCount] = useState(0);
     const [likesCount, setLikesCount] = useState(post.likes);
-    const [isBookmarked, setIsBookmarked] = useState(post.bookmarked)
+    const [isBookmarked, setIsBookmarked] = useState(post.bookmarked);
 
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
@@ -24,19 +24,20 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
 
     const handleBookmark = async () => {
         const reference = {
-            post_id: post.id
+            post_id: post.id,
+            user_id: 1
         };
         const bookmarkToggle = await postBookmark(reference);
         if (bookmarkToggle) {
             setIsBookmarked(bookmarkToggle.bookmarked)
-        }
+        };
     };
 
     const handleLike = async () => {
         const likedPost = await putLike(post.id);
         if (likedPost) {
             setLikesCount(likedPost.likes);
-        }
+        };
     };
 
     useEffect(() => {

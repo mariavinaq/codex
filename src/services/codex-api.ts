@@ -81,9 +81,22 @@ const postComment = async (postId: string, newComment: NewComment) => {
     }
 };
 
+const getBookmarks = async (userId: string) => {
+    try {
+        const response = await axios.get(`${baseUrl}/users/${userId}/bookmarks`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for bookmarked posts failed`);
+        } else {
+            console.error('Error occurred while fetching bookmarked posts');
+        }
+    }
+};
+
 const postBookmark = async (reference: Reference) => {
     try {
-        const response = await axios.post(`${baseUrl}/users/bookmarks`, reference);
+        const response = await axios.post(`${baseUrl}/users/${reference.user_id}/bookmarks`, reference);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -107,4 +120,4 @@ const getUsers = async () => {
     }
 };
 
-export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, postBookmark, getUsers };
+export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, getBookmarks, postBookmark, getUsers };

@@ -6,17 +6,23 @@ import './Header.scss';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
-    const handleOnClick = () => {
+
+    const handleOnClickLogo = () => {
         navigate('/');
     }
+
+    const handleOnClickBookmarks = () => {
+        navigate('/bookmarks');
+    }
+
     return (
         <header className='header'>
-            <div className='header__logo-container' onClick={handleOnClick}>
+            <div className='header__logo-container' onClick={handleOnClickLogo}>
                 <img className='header__logo-icon' src={code} alt='site logo' />
                 <p className='header__logo-title'>c o d e x</p>
             </div>
             <div className='header__user-pages'>
-                <img className='header__bookmark' src={bookmark} />
+                <img className='header__bookmark' src={bookmark} onClick={handleOnClickBookmarks}/>
                 <div className='header__profile'>
                     <img className='header__avatar' src={avatar} />
                     <p className='header__username'>username</p>

@@ -8,8 +8,8 @@ const Comment: React.FC<CommentProps> = ({ comment }) => {
         <div className='comment'>
             <div className='comment__header'>
                 <div className='comment__profile'>
-                    <img className='comment__avatar' src={`${baseUrl}${comment.comment_avatar}`} />
-                    <p className='comment__username'>{comment.comment_username}</p>
+                    <img className='comment__avatar' src={`${baseUrl}${comment.avatar}`} />
+                    <p className='comment__username'>{comment.username}</p>
                 </div>
                 <time className='comment__timestamp'>• {agoTimestamp(comment.timestamp)}</time>
             </div>

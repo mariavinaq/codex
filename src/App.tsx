@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import MainFeed from './pages/MainFeed/MainFeed'
 import SubmitPost from './pages/SubmitPost/SubmitPost'
 import SelectedPost from './pages/SelectedPost/SelectedPost'
+import Bookmarks from './pages/Bookmarks/Bookmarks'
 import './App.scss'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
             <Route path='/posts' element={<MainFeed />}></Route>
             <Route path='/posts/:postId' element={<SelectedPost />}></Route>
             <Route path='/submit' element={<SubmitPost />}></Route>
+            <Route path='/bookmarks' element={<Bookmarks />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

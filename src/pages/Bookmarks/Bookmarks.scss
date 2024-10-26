@@ -1,0 +1,40 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.bookmarks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    &__list {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        gap: 1.25rem;
+
+        @include small-device {
+            max-height: 50rem;
+        }
+
+        @include tablet {
+            max-height: 50rem;
+        }
+
+        @include small-desktop {
+            max-height: 50rem;
+        }
+
+        @include desktop {
+            max-height: 60rem;
+        }
+    }
+}

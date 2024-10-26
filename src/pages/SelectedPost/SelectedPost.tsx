@@ -8,6 +8,7 @@ import Comments from '../../components/Comments/Comments';
 import copy from '../../assets/images/copy.png';
 import like from '../../assets/images/like.png';
 import comments from '../../assets/images/comments.png';
+import bookmark from '../../assets/images/bookmark.png';
 import toBookmark from '../../assets/images/to-bookmark.png';
 import './SelectedPost.scss';
 
@@ -23,6 +24,7 @@ const SelectedPost = () => {
     const [postComments, setPostComments] = useState<Comment[] | null>(null);
     const [incomingComment, setIncomingComment] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
+    const [isBookmarked, setIsBookmarked] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -35,9 +37,10 @@ const SelectedPost = () => {
                 setJsCode(post.js);
                 setLikesCount(post.likes)
                 setIsLoading(false);
+                setIsBookmarked(post.bookmarked);
             } else {
                 console.error("No postId provided");
-            }
+            };
         };
         retrievePost();
     }, [params.postId]);
@@ -53,7 +56,7 @@ const SelectedPost = () => {
             }
         };
         retrieveComments();
-    }, [params.postId, incomingComment])
+    }, [params.postId, incomingComment, isBookmarked])
 
     useEffect(() => {
         const previewSetup = `
@@ -100,9 +103,13 @@ const SelectedPost = () => {
 
     const handleBookmark = async () => {
         const reference = {
-            post_id: Number(params.postId)
+            post_id: Number(params.postId),
+            user_id: 1
         };
-        await postBookmark(reference);
+        const bookmarkToggle = await postBookmark(reference);
+        if (bookmarkToggle) {
+            setIsBookmarked(bookmarkToggle.bookmarked)
+        };
     };
 
     const handleLike = async () => {
@@ -117,8 +124,8 @@ const SelectedPost = () => {
             {isLoading ? <Loader /> : selectedPost && postComments &&
                 <div className='selected-post'>
                     <div className='selected-post__profile'>
-                        <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.post_avatar}`} />
-                        <p className='selected-post__username'>{selectedPost.post_username}</p>
+                        <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.avatar}`} />
+                        <p className='selected-post__username'>{selectedPost.username}</p>
                         <time className='selected-post__timestamp'>• {agoTimestamp(selectedPost.timestamp)}</time>
                     </div>
                     <h1 className='selected-post__title'>{selectedPost.title}</h1>
@@ -182,7 +189,7 @@ const SelectedPost = () => {
                                     {postComments.length}
                                 </button>
                                 <button className='selected-post__action-button'>
-                                    <img className='selected-post__action-icon selected-post__action-icon--bookmark' src={toBookmark} onClick={handleBookmark} />
+                                    <img className='selected-post__action-icon selected-post__action-icon--bookmark' src={isBookmarked ? bookmark : toBookmark} onClick={handleBookmark} />
                                 </button>
                             </div>
                             <div ref={scrollRef}>
