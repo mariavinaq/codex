@@ -5,6 +5,7 @@ import { agoTimestamp } from '../../utils/utils';
 import { baseUrl, getComments, postBookmark, putLike } from '../../services/codex-api';
 import like from '../../assets/images/like.png';
 import comments from '../../assets/images/comments.png';
+import bookmark from '../../assets/images/bookmark.png';
 import toBookmark from '../../assets/images/to-bookmark.png';
 import './FeedPost.scss';
 
@@ -15,6 +16,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     const useVideoTag = videoExt.includes(mediaExt.toLowerCase());
     const [commentsCount, setCommentsCount] = useState(0);
     const [likesCount, setLikesCount] = useState(post.likes);
+    const [isBookmarked, setIsBookmarked] = useState(post.bookmarked)
 
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
@@ -24,7 +26,10 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
         const reference = {
             post_id: post.id
         };
-        await postBookmark(reference);
+        const bookmarkToggle = await postBookmark(reference);
+        if (bookmarkToggle) {
+            setIsBookmarked(bookmarkToggle.bookmarked)
+        }
     };
 
     const handleLike = async () => {
@@ -72,7 +77,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
                     <span>{commentsCount}</span>
                 </div>
                 <div className='feed-post__action-container feed-post__action-container--bookmark'>
-                    <img className='feed-post__action-icon' src={toBookmark} onClick={handleBookmark} />
+                    <img className='feed-post__action-icon' src={isBookmarked ? bookmark : toBookmark} onClick={handleBookmark} />
                 </div>
             </div>
         </div>

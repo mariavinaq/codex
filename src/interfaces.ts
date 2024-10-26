@@ -20,6 +20,7 @@ interface SimplePost {
     thumbnail: string,
     likes: number,
     avatar: string,
+    bookmarked: boolean
 }
 
 interface FeedPostProps {
