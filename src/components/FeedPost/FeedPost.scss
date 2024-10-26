@@ -40,10 +40,14 @@
     &__media-container {
         display: flex;
         justify-content: center;
+        overflow: hidden;
     }
 
     &__media {
         width: 100%;
+        display: block;
+        margin-bottom: -2px;
+        transform: scaleX(1.05);
     }
 
     &__actions {
