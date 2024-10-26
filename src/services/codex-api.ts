@@ -55,6 +55,19 @@ const getComments = async (postId: string) => {
     }
 };
 
+const putLike = async (postId: number) => {
+    try {
+        const response = await axios.put(`${baseUrl}/posts/${postId}/likes`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: PUT request for liking post failed`);
+        } else {
+            console.error('Error occurred while liking post');
+        }
+    }
+};
+
 const postComment = async (postId: string, newComment: NewComment) => {
     try {
         const response = await axios.post(`${baseUrl}/posts/${postId}/comments`, newComment);
@@ -94,4 +107,4 @@ const getUsers = async () => {
     }
 };
 
-export { baseUrl, getPosts, getPost, postPost, getComments, postComment, postBookmark, getUsers };
+export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, postBookmark, getUsers };

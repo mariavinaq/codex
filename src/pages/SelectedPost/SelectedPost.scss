@@ -81,6 +81,7 @@
 
         &--preview {
             height: 30rem;
+            padding: 0;
         }
     }
 
@@ -99,9 +100,10 @@
 
     &__action-icon {
         width: 2rem;
+        margin-right: 0.5rem;
 
-        &--comments {
-            margin-right: 0.5rem;
+        &--bookmark {
+            margin-right: 0;
         }
     }
 }

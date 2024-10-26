@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { baseUrl, getComments, getPost, postComment } from '../../services/codex-api';
+import { baseUrl, getComments, getPost, postComment, postBookmark, putLike } from '../../services/codex-api';
 import { agoTimestamp } from '../../utils/utils';
 import { Post, Comment } from '../../interfaces';
 import Loader from '../../components/Loader/Loader';
 import Comments from '../../components/Comments/Comments';
 import copy from '../../assets/images/copy.png';
+import like from '../../assets/images/like.png';
 import comments from '../../assets/images/comments.png';
 import toBookmark from '../../assets/images/to-bookmark.png';
 import './SelectedPost.scss';
@@ -21,6 +22,7 @@ const SelectedPost = () => {
     const [preview, setPreview] = useState('');
     const [postComments, setPostComments] = useState<Comment[] | null>(null);
     const [incomingComment, setIncomingComment] = useState(false);
+    const [likesCount, setLikesCount] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -31,6 +33,7 @@ const SelectedPost = () => {
                 setHtmlCode(post.html);
                 setCssCode(post.css);
                 setJsCode(post.js);
+                setLikesCount(post.likes)
                 setIsLoading(false);
             } else {
                 console.error("No postId provided");
@@ -47,7 +50,7 @@ const SelectedPost = () => {
                     const sortedComments = comments.sort((a: Comment, b: Comment) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
                     setPostComments(sortedComments)
                 }
-            } 
+            }
         };
         retrieveComments();
     }, [params.postId, incomingComment])
@@ -94,6 +97,20 @@ const SelectedPost = () => {
             console.error("No postId provided");
         };
     }
+
+    const handleBookmark = async () => {
+        const reference = {
+            post_id: Number(params.postId)
+        };
+        await postBookmark(reference);
+    };
+
+    const handleLike = async () => {
+        const likedPost = await putLike(Number(params.postId));
+        if (likedPost) {
+            setLikesCount(likedPost.likes);
+        }
+    };
 
     return (
         <>
@@ -156,12 +173,16 @@ const SelectedPost = () => {
                         <div className='selected-post__more'>
                             <p className='selected-post__description'>{selectedPost.description}</p>
                             <div className='selected-post__actions'>
+                                <button className='selected-post__action-button'>
+                                    <img className='selected-post__action-icon' src={like} onClick={handleLike} />
+                                    {likesCount}
+                                </button>
                                 <button className='selected-post__action-button' onClick={handleShowComments}>
-                                    <img className='selected-post__action-icon selected-post__action-icon--comments' src={comments} />
+                                    <img className='selected-post__action-icon' src={comments} />
                                     {postComments.length}
                                 </button>
                                 <button className='selected-post__action-button'>
-                                    <img className='selected-post__action-icon' src={toBookmark} />
+                                    <img className='selected-post__action-icon selected-post__action-icon--bookmark' src={toBookmark} onClick={handleBookmark} />
                                 </button>
                             </div>
                             <div ref={scrollRef}>

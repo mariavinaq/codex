@@ -47,10 +47,7 @@ const SubmitPost = () => {
 
     return (
         <div className='submit-post'>
-            <form className='submit-post__form' onSubmit={(event) => {
-                 
-                 handleOnSubmit(event)}
-                }>
+            <form className='submit-post__form' onSubmit={(event) => handleOnSubmit(event)}>
                 <div className='submit-post__codes'>
                     <div className='submit-post__editor submit-post__editor--preview'>
                     <label className='submit-post__form-title'>Preview</label>
