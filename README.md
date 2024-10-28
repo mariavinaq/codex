@@ -345,7 +345,7 @@ A. Set up the server
    2. Open the folder in VSCode
    3. Open the terminal and use command `npm install`
    4. Create a `.env` file using the `.env.example`
-   5. Create a new schema on MySQL Workbench using the same `DB_NAME` from .env
+   5. Create a new schema on MySQL Workbench using the same `DB_NAME` from `.env`
    6. In the terminal, use command `npm run migrate`
    7. Then, use command `npm run seed`
    8. Then, use command run `npm start`
