@@ -128,7 +128,8 @@ Response:
 
 **GET /posts/:postId**
 
-- Get a post by id 
+- Get a post by id
+- Parameters: post id
 
 Response: 
 ```
