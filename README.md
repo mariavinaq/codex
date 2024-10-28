@@ -8,7 +8,6 @@
   - [Features](#features)
 - [Implementation](#implementation)
   - [Tech Stack](#tech-stack)
-  - [APIs](#apis)
   - [Sitemap](#sitemap)
   - [Wireframes](#wireframes)
   - [Endpoints](#endpoints) 
