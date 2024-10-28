@@ -14,7 +14,7 @@ const Comments: React.FC<CommentsProps> = ({ comments, submitComment }) => {
         <div className='comments'>
             <h2 className='comments__title'>Comments</h2>
             <form className='comments__form' onSubmit={(event) => handleOnSubmit(event)}>
-                <textarea className='comments__input' name='comment'></textarea>
+                <textarea className='comments__input' name='comment' required></textarea>
                 <button className='comments__button' type='submit'>
                     <img className='comments__button-icon' src={send} />
                 </button>
