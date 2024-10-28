@@ -3,8 +3,16 @@
 ## Links
 
 - [Overview](#overview)
+  - [Problem Space](#problem-space)
+  - [User Profile](#user-profile)
+  - [Features](#features)
 - [Implementation](#implementation)
-- [Future](#future)
+  - [Tech Stack](#tech-stack)
+  - [APIs](#apis)
+  - [Sitemap](#sitemap)
+  - [Wireframes](#wireframes)
+  - [Endpoints](#endpoints) 
+- [Upcoming Features](#upcoming-features)
 - [Instructions](#instructions)
 
 ## Overview
@@ -207,7 +215,7 @@ Response:
       ]
 }
 ```
-## Future
+## Upcoming Features
 
 - Integrate an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
 - Allow the feed to be sorted by newest or most popular (by likes)
