@@ -338,7 +338,7 @@ Post body:
 
 ## Instructions
 
-### How to run Codex locally
+### Run Codex locally
 
 A. Set up the server
    1. [Download the zip file of the server repository](https://github.com/mariavinaq/codex-server)
