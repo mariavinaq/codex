@@ -2,6 +2,7 @@
 
 ## Links
 
+- [Codex - Live Site](https://codex-platform.netlify.app/)
 - [Overview](#overview)
   - [Problem Space](#problem-space)
   - [User Profile](#user-profile)
