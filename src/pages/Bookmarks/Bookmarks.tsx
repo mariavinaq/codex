@@ -23,7 +23,7 @@ const Bookmarks = () => {
     return (
         <div className='bookmarks'>
             <h1 className='bookmarks__title'>Code for Later</h1>
-            <div className='bookmarks__list'>
+            <div className={`bookmarks__list bookmarks__list${postsList.length > 4 ? '--more': ''}`}>
                 {
                     postsList.length === 0 ? <NoBookmarks />
                         : postsList.map((post) => <FeedPost post={post} key={post.id} />)

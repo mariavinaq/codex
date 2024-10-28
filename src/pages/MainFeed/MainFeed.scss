@@ -11,11 +11,11 @@
     padding: 2rem 0;
 
     @include tablet {
-        max-height: 250rem;
+        max-height: 260rem;
     }
 
     @include small-desktop {
-        max-height: 170rem;
+        max-height: 180rem;
     }
 
     @include desktop {
