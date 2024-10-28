@@ -2,29 +2,10 @@
 
 ## Links
 
-[Link to instructions](#instructions)
-
-## Instructions
-
-### How to run Codex locally
-
-A. Set up the server
-   1. [Download the zip file of the server repository](https://github.com/mariavinaq/codex-server)
-   2. Open the folder in VSCode
-   3. Open the terminal and use command `npm install`
-   4. Create a `.env` file using the `.env.example`
-   5. Create a new schema on MySQL Workbench using the same `DB_NAME` from .env
-   6. In the terminal, use command `npm run migrate`
-   7. Then, use command `npm run seed`
-   8. Then, use command run `npm start`
-   9. Server should now be successfully running
-       
-B. Set up the client
-   1. Download the zip file of this repository
-   2. Open the folder in VSCode
-   3. Open the terminal and use command `npm install`
-   4. Then, use command `npm run dev`
-   5. Client should now be successfully running, and connected to the server
+- [Overview](#overview)
+- [Implementation](#implementation)
+- [Future](#future)
+- [Instructions](#instructions)
 
 ## Overview
 
@@ -226,9 +207,31 @@ Response:
       ]
 }
 ```
-### Future
+## Future
 
 - Integrate an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
 - Allow the feed to be sorted by newest or most popular (by likes)
 - Add authorization and login features, using jwauth and bcrpyt
 - Deployment using Netlify, Heroku, and JawsDB
+
+## Instructions
+
+### How to run Codex locally
+
+A. Set up the server
+   1. [Download the zip file of the server repository](https://github.com/mariavinaq/codex-server)
+   2. Open the folder in VSCode
+   3. Open the terminal and use command `npm install`
+   4. Create a `.env` file using the `.env.example`
+   5. Create a new schema on MySQL Workbench using the same `DB_NAME` from .env
+   6. In the terminal, use command `npm run migrate`
+   7. Then, use command `npm run seed`
+   8. Then, use command run `npm start`
+   9. Server should now be successfully running
+       
+B. Set up the client
+   1. Download the zip file of this repository
+   2. Open the folder in VSCode
+   3. Open the terminal and use command `npm install`
+   4. Then, use command `npm run dev`
+   5. Client should now be successfully running, and connected to the server
