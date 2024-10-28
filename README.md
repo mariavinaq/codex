@@ -10,6 +10,7 @@
   - [Tech Stack](#tech-stack)
   - [Sitemap](#sitemap)
   - [Wireframes](#wireframes)
+  - [Data](#data)
   - [Endpoints](#endpoints) 
 - [Upcoming Features](#upcoming-features)
 - [Instructions](#instructions)
@@ -96,6 +97,10 @@ Unstyled sketches of the initial idea:
 [Feed](https://wireframe.cc/bDiAQR)
 
 [Individual Post](https://wireframe.cc/uFSz1O)
+
+### Data
+
+![db_diagram](https://github.com/user-attachments/assets/5ee0d1fc-29d3-46af-be1e-2cf79e8e3c01)
 
 ### Endpoints
 
