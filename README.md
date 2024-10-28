@@ -1,5 +1,9 @@
 # Codex
 
+## Links
+
+[Link to instructions](#instructions)
+
 ## Instructions
 
 ### How to run Codex locally
