@@ -6,7 +6,7 @@
 
 ### Problem Space
 
-Developers often look for pre-existing solutions to common problems, such as UI elements, useful functions, or code setups, and scavenge for solutions in places like Stack Overflow Q&As, blog posts, or generally text-heavy platforms. There are more targetted platforms for sharing code snippets, such as GitHub gists, but lack visual emphasis or an engaging experience. There exist platforms for sharing code snippets with visual emphasis, such as CodePen, but moreso focus on the coding environment rather than a community-driven sharing experience. 
+Developers often look for pre-existing solutions to common problems, such as UI elements, useful functions, or code setups, and scavenge for solutions in places like Stack Overflow Q&As, blog posts, or generally text-heavy platforms. There are more targetted platforms for sharing code snippets, such as GitHub gists, but lack visual emphasis or an engaging experience. There exist platforms for sharing code snippets with visual emphasis, such as CodePen, but moreso focus on the coding environment rather than a user-driven sharing experience. 
 
 Codex aims to fill a perceived gap in the global developer community by offering a scrolling-feed style, social media-like, experience for discovering and sharing code snippets through posts, effortlessly. 
 
@@ -19,57 +19,65 @@ Codex aims to fill a perceived gap in the global developer community by offering
 
 ### Features
 
-- Main feed where users can scroll through posts of latest code snippets shared by other users
-  - By default, the posts shown will be a mix of topics/functions
-  - This will have an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
-  - The feed can be sorted by newest or most popular (by likes)
-- Each post in the feed will contain:
-  - a consise title (50-70 characters for readability)
-  - an image or short video to showcase some sort of output of the code
-  - author name (links to profile)
-  - number of likes and comments
-  - save/bookmark function
-- When a post is clicked, additional information will be shown, such as:
-  -  code for HTML, CSS, and/or JS that the user can easily copy to the clipboard
-  -  description (if needed) provided by author
-  -  the post comments and ability to post a comment
-  -  Note: the post does not provide a live preview of the code (such as that of CodePen), and it is up to the author to provide their own image/screenshot or video of the code output
-- When a user profile is clicked, it will show some user information and bio, and a feed of posts that are authored by that user
-- When logged in, users can:
-  - Have their own profile
-  - Author a post
-  - Like a post
-  - Comment on a post
-  - Be able to save/bookmark a post, and be able to view all their saved posts
+- Main feed:
+  - user can scroll through posts of latest code snippets shared by other users
+  - user can like a post
+  - user can un/bookmark a post
+  - user can click on the author's username/avatar to view posts by that author
+  - user can click the post to find out more information
+- Selected post:
+  - user can see a live preview of the provided html, css, js code
+  - user can edit the provided code and have a live preview of it
+  - user can like the post
+  - user can un/bookmark the post
+  - user can leave a comment
+  - user can click on the author's username/avatar to view other posts by that author
+- Bookmarks page:
+  - if there are no bookmarked posts, user is prompted to go back to the feed to bookmark a post
+  - if there are bookmarked posts, user can see them on this page  
+- Profile page:
+  - user can view all posts authored by a particular user
+- Post page:
+  - user can input data in a form for a new post to submit
+  - user can have a live preview showing the ouput of the provided code
+  - user can submit the form and the submission will be seen as the first/newest post on the main feed
 
 ## Implementation
 
 ### Tech Stack
 
-- SASS
-- React.js
-- Node.js
+- TypeScript
+- React
+- Node
 - Express
 - MySQL
-- Netlify
-- Heroku
-- JawsDB
+- Client libraries:
+  - axios
+  - react-dom
+  - react-router-dom
+  - sass
+- Server libraries:
+  - cors
+  - dotenv
+  - express
+  - knex
+  - multer
+  - mysql2
 
 ### APIs
 
-No external APIs will be used.
+No external APIs are used.
 
 ### Sitemap
 
 - Main feed
-- Register or login
 - User profile
 - Submit post
-- Saved posts
+- Bookmarked posts
 
 ### Wireframes
 
-Unstyled sketches:
+Unstyled sketches of the initial idea:
 
 [Feed](https://wireframe.cc/bDiAQR)
 
@@ -192,3 +200,9 @@ Response:
       ]
 }
 ```
+### Future
+
+- Integrate an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
+- Allow the feed to be sorted by newest or most popular (by likes)
+- Add authorization and login features, using jwauth and bcrpyt
+- Deployment using Netlify, Heroku, and JawsDB
