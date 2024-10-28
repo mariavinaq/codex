@@ -3,6 +3,7 @@ import { getBookmarks, } from '../../services/codex-api.ts';
 import { SimplePost } from '../../interfaces.ts';
 import FeedPost from '../../components/FeedPost/FeedPost';
 import './Bookmarks.scss';
+import NoBookmarks from '../../components/NoBookmarks/NoBookmarks.tsx';
 
 const Bookmarks = () => {
     const userId = '1';
@@ -23,7 +24,10 @@ const Bookmarks = () => {
         <div className='bookmarks'>
             <h1 className='bookmarks__title'>Code for Later</h1>
             <div className='bookmarks__list'>
-                {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
+                {
+                    postsList.length === 0 ? <NoBookmarks />
+                        : postsList.map((post) => <FeedPost post={post} key={post.id} />)
+                }
             </div>
         </div>
     );

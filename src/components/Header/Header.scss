@@ -6,17 +6,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    width: 32rem;
     margin: 0 auto;
 
     @include tablet {
-        width: 76.8rem;
         padding: 3rem 4rem;
-    }
-
-    @include small-desktop {
-        width: unset;
-        
     }
 
     @include desktop {
@@ -38,12 +31,11 @@
         margin-right: 0.75rem;
 
         @include tablet {
-            width: 2.5rem;
+            width: 3rem;
             margin-right: 1.25rem;
         }
 
         @include desktop{
-            width: 3rem;
             margin-right: 1.5rem;
         }
     }

@@ -102,8 +102,22 @@
         width: 2rem;
         margin-right: 0.5rem;
 
+        &--like {
+            &:hover {
+                filter: invert(69%) sepia(73%) saturate(7156%) hue-rotate(308deg) brightness(98%) contrast(94%);
+            }
+        }
+
+        &--comment {
+            &:hover {
+                filter: invert(65%) sepia(39%) saturate(7412%) hue-rotate(149deg) brightness(94%) contrast(97%);
+            }
+        }
+
         &--bookmark {
-            margin-right: 0;
+            &:hover {
+                filter: invert(38%) sepia(97%) saturate(4762%) hue-rotate(348deg) brightness(98%) contrast(94%);
+            }
         }
     }
 }

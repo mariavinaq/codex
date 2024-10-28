@@ -185,17 +185,17 @@ const SelectedPost = () => {
                         <div className='selected-post__more'>
                             <p className='selected-post__description'>{selectedPost.description}</p>
                             <div className='selected-post__actions'>
-                                <button className='selected-post__action-button'>
-                                    <img className='selected-post__action-icon' src={like} onClick={handleLike} />
+                                <div className='selected-post__action-button'>
+                                    <img className='selected-post__action-icon selected-post__action-icon--like' src={like} onClick={handleLike} />
                                     {likesCount}
-                                </button>
-                                <button className='selected-post__action-button' onClick={handleShowComments}>
-                                    <img className='selected-post__action-icon' src={comments} />
+                                </div>
+                                <div className='selected-post__action-button' onClick={handleShowComments}>
+                                    <img className='selected-post__action-icon selected-post__action-icon--comment' src={comments} />
                                     {postComments.length}
-                                </button>
-                                <button className='selected-post__action-button'>
+                                </div>
+                                <div className='selected-post__action-button'>
                                     <img className='selected-post__action-icon selected-post__action-icon--bookmark' src={isBookmarked ? bookmark : toBookmark} onClick={handleBookmark} />
-                                </button>
+                                </div>
                             </div>
                             <div ref={scrollRef}>
                                 <Comments comments={(postComments)} submitComment={submitComment} />

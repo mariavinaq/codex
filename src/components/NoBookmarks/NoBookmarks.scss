@@ -1,0 +1,47 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.no-bookmarks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+    padding: 0 2rem;
+    text-align: center;
+
+    &__robot {
+        width: 3rem;
+
+        @include tablet {
+            width: 3.5rem;
+        }
+
+        @include desktop {
+            width: 4rem;
+        }
+    }
+
+    &__message {
+        font-size: 1.25rem;
+        line-height: 2rem;
+
+        @include tablet {
+            font-size: 1.5rem;
+        }
+
+        @include desktop {
+            font-size: 1.75rem;
+        }
+
+        &--feed {
+            padding-bottom: 0.1rem;
+            border-bottom: 2px dotted black;
+            cursor: pointer;
+
+            &:hover {
+                filter: invert(22%) sepia(21%) saturate(3865%) hue-rotate(225deg) brightness(94%) contrast(97%);
+            }
+        }
+    } 
+}
