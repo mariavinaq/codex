@@ -106,119 +106,228 @@ Unstyled sketches of the initial idea:
 
 **GET /posts**
 
+- Get all posts to show on feed
+  
 Response: 
 ```
 [
-    {
-        "id": 1,
-        "author": "Isaiah Teran",
-        "timestamp": 1729063825,
-        "title": "Three dots loading html animation",
-        "media": (firebase file url),
-        "likes": 45,
-        "comments": [
-            "id": 1,
-            "author": "Ren Delmor",
-            "comment": "This is exactly what I needed!"
-          ]
+        {
+        id: 1,
+        timestamp: "2024-10-14 00:00:01.000000",
+        title: "Smooth loading dots animation with CSS",
+        thumbnail: "/media/code-1.mov",
+        likes: 138,
+        user_id: 3,
+        username: lightersalmon,
+        avatar: '/avatars/avatar-3.svg'
+        bookmarked: 'null'
     },
     ...
 ]
 ```
 
-**GET /posts/:id**
+**GET /posts/:postId**
+
+- Get a post by id 
 
 Response: 
 ```
 {
-    "id": 1,
-    "author": "Isaiah Teran",
-    "timestamp": 1729063825,
-    "title": "Three dots loading html animation",
-    "media": (firebase file url),
-    "description": "...",
-    "html": "...",
-    "css": "...",
-    "js": "...",
-    "likes": 45,
-    "comments": [
-        "id": 1,
-        "author": "Ren Delmor",
-        "comment": "This is exactly what I needed!"
-      ]
+    id: 1,
+    timestamp: "2024-10-14 00:00:01.000000",
+    title: "Smooth loading dots animation with CSS",
+    description: "Add a touch of flair to your loading screens with this minimal...",
+    thumbnail: "/media/code-1.mov",
+    html: "...",
+    css: "...",
+    js:  "...",
+    likes: 138,
+    user_id: 3,
+    username: lightersalmon,
+    avatar: '/avatars/avatar-3.svg',
+    bookmarked: 'null'
 }
 ```
 
 **POST /posts**
 
-Post body: 
-```
-{
-    "author": "Isaiah Teran",
-    "title": "Three dots loading html animation",
-    "media": "...",
-    "html": "...",
-    "css": "...",
-    "js": "..."
-}
-```
-
-Response: 
-```
-{
-    "id": 1,
-    "author": "Isaiah Teran",
-    "timestamp": 1729063825,
-    "title": "Three dots loading html animation",
-    "media": "...",
-    "html": "...",
-    "css": "...",
-    "js": "..."
-}
-```
-
-**POST /posts/:id/comments**
+- Submit a new post
+- Paramters: form data (including media file), user id
 
 Post body: 
 ```
 {
-    "author": "Ren Delmor",
-    "comment": "This is exactly what I needed!"
-}
-```
-
-Response: 
-```
-{
-    "id": 1,
-    "author": "Ren Delmor",
-    "timestamp": 1729063825,
-    "comment": "This is exactly what I needed!"
-}
-```
-
-**PUT /posts/:id/like**
-
-Response: 
-```
-{
-    "id": 1,
-    "author": "Isaiah Teran",
-    "timestamp": 1729063825,
-    "title": "Three dots loading html animation",
-    "media": "...",
+    "title": "Smooth loading dots animation with CSS",
     "description": "...",
     "html": "...",
     "css": "...",
-    "js": "...",
-    "likes": 45,
-    "comments": [
-        "id": 1,
-        "author": "Ren Delmor",
-        "comment": "This is exactly what I needed!"
-      ]
+    "js": "..."
+    "thumbnail": "...",
+    "user_id": 3,
 }
 ```
+
+Response: 
+```
+{
+    id: 1,
+    timestamp: "2024-10-14 00:00:01.000000",
+    user_id: 3,
+    title: "Smooth loading dots animation with CSS",
+    description: "Add a touch of flair to your loading screens with this minimal...",
+    thumbnail: "/media/code-1.mov",
+    html: "...",
+    css: "...",
+    js:  "...",
+    likes: 0,
+}
+```
+
+**PUT /posts/:postId/likes**
+
+- Like a post
+- Paramters: post id
+
+Response: 
+```
+{
+    id: 1,
+    timestamp: "2024-10-14 00:00:01.000000",
+    user_id: 3,
+    title: "Smooth loading dots animation with CSS",
+    description: "Add a touch of flair to your loading screens with this minimal...",
+    thumbnail: "/media/code-1.mov",
+    html: "...",
+    css: "...",
+    js:  "...",
+    likes: 1,
+}
+```
+
+**GET /posts/:postId/comments**
+
+- Get all comments of a specific post
+- Parameters: post id
+
+Post body: 
+```
+[
+  {
+      id: 1,
+      timestamp: "2024-10-14 00:00:01.000000",
+      comment: "This is exactly what I needed!"
+      post_id: 1
+      user_id: 2,
+      avatar: '/avatars/avatar-3.svg'
+  },
+  ...
+]
+```
+
+
+**POST /posts/:postId/comments**
+
+- Add a comment to a specific post
+- Parameters: form data, post id, user id
+
+Post body: 
+```
+{
+    "comment": "This is exactly what I needed!"
+    "user_id": 2,
+    "post_id": 1
+}
+```
+
+Response: 
+```
+{
+    id: 1,
+    user_id: 2,
+    post_id: 1
+    timestamp: "2024-10-14 00:00:01.000000",
+    comment: "This is exactly what I needed!"
+}
+```
+
+
+**GET /users/:userId**
+
+- Get a user by id
+- Parameters: user id
+
+Response: 
+```
+{
+    id: 3,
+    username: lightersalmon,
+    avatar: '/avatars/avatar-3.svg'
+}
+```
+
+
+**GET /users/:userId/posts**
+
+- Get all user's posts by id
+- Parameters: user id
+
+Response: 
+```
+[
+        {
+        id: 1,
+        timestamp: "2024-10-14 00:00:01.000000",
+        title: "Smooth loading dots animation with CSS",
+        thumbnail: "/media/code-1.mov",
+        likes: 138,
+        user_id: 3,
+        username: lightersalmon,
+        avatar: '/avatars/avatar-3.svg',
+        bookmarked: 'null'
+    },
+    ...
+]
+```
+
+
+**GET /users/:userId/bookmarks**
+
+- Get all user's bookmarked posts by id
+- Parameters: user id
+
+Response: 
+```
+[
+        {
+        id: 1,
+        timestamp: "2024-10-14 00:00:01.000000",
+        title: "Smooth loading dots animation with CSS",
+        thumbnail: "/media/code-1.mov",
+        likes: 138,
+        user_id: 3,
+        username: lightersalmon,
+        avatar: '/avatars/avatar-3.svg',
+        bookmarked: 1
+    },
+    ...
+]
+```
+
+
+**POST /users/:userId/bookmarks/:postId**
+
+- Bookmark (or unbookmark) a specific post
+- Parameters: post id, user id
+
+Post body: 
+```
+{
+    "user_id": 3,
+    "post_id": 1
+}
+```
+
+
 ## Upcoming Features
 
 - Integrate an explorative/search functionality where users can specifically indicate the type of content they want to see, and the feed will adjust accordingly
