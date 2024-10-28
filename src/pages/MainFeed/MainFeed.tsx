@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getPosts } from '../../services/codex-api.ts';
 import { SimplePost } from '../../interfaces.ts';
 import FeedPost from '../../components/FeedPost/FeedPost';
+import add from '../../assets/images/add.png';
+import up from '../../assets/images/up.png';
 import './MainFeed.scss';
 
 const MainFeed = () => {
     const navigate = useNavigate();
+    const scrollRef = useRef<HTMLDivElement | null>(null);
     const [postsList, setPostsList] = useState<SimplePost[]>([]);
-    
+
     useEffect(() => {
         const retrievePosts = async () => {
             const posts = await getPosts()
@@ -20,17 +23,28 @@ const MainFeed = () => {
         retrievePosts();
     }, []);
 
-    const handleOnClick = () => {
+    const handleAddPost = () => {
         navigate('/submit');
     };
 
+    const handleScrollUp = () => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollIntoView()
+        };
+    };
+
     return (
-        <div className='main-feed'>
-            <button className='main-feed__add-button' onClick={handleOnClick}>+ New Post</button>
-            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
-            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
-            {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
-        </div>
+        <>
+            <div className='main-feed__top' ref={scrollRef}></div>
+            <div className='main-feed'>
+                <div className='main-feed__actions'>
+                    <img className='main-feed__action' onClick={handleAddPost} src={add} alt='icon to add a post' />
+                    <img className='main-feed__action' onClick={handleScrollUp} src={up} alt='icon to go up' />
+                </div>
+                {postsList.map((post) => <FeedPost post={post} key={post.id} />)}
+            </div>
+        </>
+
     );
 };
 

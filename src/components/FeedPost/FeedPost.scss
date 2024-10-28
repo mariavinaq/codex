@@ -4,10 +4,18 @@
 .feed-post {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 30rem;
     gap: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
+    font-size: 1.35rem;
     
+    @include tablet {
+        &:hover {
+            transform: scale(1.025);
+        }
+        
+    }
+
     &__header {
         display: flex;
         align-items: center;
@@ -15,13 +23,15 @@
     }
 
     &__username {
-        font-size: 1.25rem;
         font-weight: bold;
+
+        &:hover {
+            filter: invert(82%) sepia(93%) saturate(430%) hue-rotate(2deg) brightness(91%) contrast(87%);
+        }
     }
 
     &__timestamp {
         margin-left: 0.5rem;
-        font-size: 1.25rem;
         color: grey;
     }
 
@@ -69,5 +79,23 @@
     &__action-icon {
         width: 2rem;
         cursor: pointer;
+
+        &--like {
+            &:hover {
+                filter: invert(69%) sepia(73%) saturate(7156%) hue-rotate(308deg) brightness(98%) contrast(94%);
+            }
+        }
+
+        &--comment {
+            &:hover {
+                filter: invert(65%) sepia(39%) saturate(7412%) hue-rotate(149deg) brightness(94%) contrast(97%);
+            }
+        }
+
+        &--bookmark {
+            &:hover {
+                filter: invert(38%) sepia(97%) saturate(4762%) hue-rotate(348deg) brightness(98%) contrast(94%);
+            }
+        }
     }
 }

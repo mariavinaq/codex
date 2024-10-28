@@ -70,15 +70,15 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
             </div>
             <div className='feed-post__actions'>
                 <div className='feed-post__action-container'>
-                    <img className='feed-post__action-icon' src={like} onClick={handleLike} />
+                    <img className='feed-post__action-icon feed-post__action-icon--like' src={like} onClick={handleLike} />
                     <span>{likesCount}</span>
                 </div>
                 <div className='feed-post__action-container'>
-                    <img className='feed-post__action-icon' src={comments} />
+                    <img className='feed-post__action-icon feed-post__action-icon--comment' src={comments} onClick={handleClickPost} />
                     <span>{commentsCount}</span>
                 </div>
                 <div className='feed-post__action-container feed-post__action-container--bookmark'>
-                    <img className='feed-post__action-icon' src={isBookmarked ? bookmark : toBookmark} onClick={handleBookmark} />
+                    <img className='feed-post__action-icon feed-post__action-icon--bookmark' src={isBookmarked ? bookmark : toBookmark} onClick={handleBookmark} />
                 </div>
             </div>
         </div>

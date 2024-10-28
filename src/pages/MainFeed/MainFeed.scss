@@ -7,15 +7,15 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
-    gap: 1.25rem;
+    gap: 2rem;
     padding: 2rem 0;
 
-    @include small-device {
-        max-height: 320rem;
-    }
+    // @include small-device {
+    //     max-height: 360rem;
+    // }
 
     @include tablet {
-        max-height: 220rem;
+        max-height: 250rem;
     }
 
     @include small-desktop {
@@ -23,25 +23,51 @@
     }
 
     @include desktop {
-        max-height: 120rem;
+        max-height: 150rem;
     }
 
-    &__add-button {
+    &__top {
+        position: absolute;
+        top: 0;
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
         position: fixed;
         bottom: 3rem;
         right: 3rem;
         padding: 1rem;
-        cursor: pointer;
         z-index: 1;
 
         @include tablet {
+            gap: 1.5rem;
             bottom: 5rem;
             right: 5rem;
         }
 
         @include desktop {
+            gap: 2rem;
             right: unset;
-            transform: translateX(1200%);
+            transform: translateX(1700%);
+        }
+    }
+
+    &__action {
+        width: 3rem;
+        cursor: pointer;
+
+        &:hover {
+            filter: invert(22%) sepia(21%) saturate(3865%) hue-rotate(225deg) brightness(94%) contrast(97%);
+        }
+
+        @include tablet {
+            width: 4rem;
+        }
+
+        @include desktop {
+            width: 5rem;
         }
     }
 }

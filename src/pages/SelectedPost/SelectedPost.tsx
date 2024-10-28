@@ -60,10 +60,15 @@ const SelectedPost = () => {
 
     useEffect(() => {
         const previewSetup = `
+            <!DOCTYPE html>
             <html>
-                <body>${htmlCode}</body>
+            <head>
                 <style>${cssCode}</style>
+            </head>
+            <body>
+                ${htmlCode}
                 <script>${jsCode}</script>
+            </body>
             </html>
         `;
         setPreview(previewSetup)
