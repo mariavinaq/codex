@@ -92,7 +92,7 @@ const SubmitPost = () => {
                     <h2 className='submit-post__title submit-post__title--td'>Post a code snippet</h2>
                     <div className='submit-post__form-detail'>
                         <label className='submit-post__form-title' htmlFor='title'>Title</label>
-                        <input className='submit-post__form-input' id='title' name='title'></input>
+                        <input className='submit-post__form-input' id='title' name='title' required></input>
                     </div>
                     <div className='submit-post__form-detail'>
                         <label className='submit-post__form-title' htmlFor='description'>Description</label>
@@ -100,7 +100,7 @@ const SubmitPost = () => {
                     </div>
                     <div className='submit-post__form-detail'>
                         <label className='submit-post__form-title' htmlFor='file'>Thumbnail</label>
-                        <input className='submit-post__file-input' type='file' id='file' name='file'></input>
+                        <input className='submit-post__file-input' type='file' id='file' name='file' required></input>
                     </div>
                     <div className='submit-post__actions'>
                         <button className='submit-post__post-button' type='reset' onClick={handleReset}>Reset</button>

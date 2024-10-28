@@ -43,7 +43,7 @@ const Header: React.FC = () => {
             </div>
             <ul className="header__nav">
                 <li className="header__nav-link" onClick={handleOnClickHome}>Explore</li>
-                <li className="header__nav-link" onClick={handleOnClickSubmit}>Submit</li>
+                <li className="header__nav-link" onClick={handleOnClickSubmit}>Post</li>
                 <li className="header__nav-link">About</li>
             </ul>
             <div className='header__user-pages'>
