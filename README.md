@@ -1,5 +1,7 @@
 # Codex
 
+## [Live Demo](https://codex-platform.netlify.app/)
+
 ## Links
 
 - [Codex - Live Site](https://codex-platform.netlify.app/)
