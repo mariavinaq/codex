@@ -22,7 +22,7 @@ const Bookmarks = () => {
 
     return (
         <div className='bookmarks'>
-            <h1 className='bookmarks__title'>Code for Later</h1>
+            <h1 className='bookmarks__title'>Code for later</h1>
             <div className={`bookmarks__list bookmarks__list${postsList.length > 4 ? '--more': ''}`}>
                 {
                     postsList.length === 0 ? <NoBookmarks />
