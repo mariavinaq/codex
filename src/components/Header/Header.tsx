@@ -23,8 +23,12 @@ const Header: React.FC = () => {
         retrieveUser();
     });
 
-    const handleOnClickLogo = () => {
+    const handleOnClickHome = () => {
         navigate('/');
+    }
+
+    const handleOnClickSubmit = () => {
+        navigate('/submit');
     }
 
     const handleOnClickBookmarks = () => {
@@ -33,14 +37,14 @@ const Header: React.FC = () => {
 
     return (
         <header className='header'>
-            <div className='header__logo-container' onClick={handleOnClickLogo}>
+            <div className='header__logo-container' onClick={handleOnClickHome}>
                 <img className='header__logo-icon' src={code} alt='site logo' />
                 <h1 className='header__logo-title'>c o d e x</h1>
             </div>
             <ul className="header__nav">
-                <li className="header__nav-link">Explore</li>
+                <li className="header__nav-link" onClick={handleOnClickHome}>Explore</li>
+                <li className="header__nav-link" onClick={handleOnClickSubmit}>Submit</li>
                 <li className="header__nav-link">About</li>
-                <li className="header__nav-link">Settings</li>
             </ul>
             <div className='header__user-pages'>
                 <img className='header__bookmark' src={bookmark} onClick={handleOnClickBookmarks}/>

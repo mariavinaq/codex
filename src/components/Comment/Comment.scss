@@ -4,6 +4,11 @@
 .comment {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    font-size: 1.3rem;
+
+    @include tablet {
+        font-size: 1.4rem;
+    }
 
     &__header {
         display: flex;
@@ -19,6 +24,12 @@
     &__avatar {
         width: 2rem;
         margin-right: 1rem;
+    }
+
+    &__username {
+        &:hover {
+            filter: invert(82%) sepia(93%) saturate(430%) hue-rotate(2deg) brightness(91%) contrast(87%);
+        }
     }
 
     &__timestamp {

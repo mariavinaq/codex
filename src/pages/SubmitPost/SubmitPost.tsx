@@ -45,12 +45,16 @@ const SubmitPost = () => {
         submitPost(event);
     };
 
+    const handleReset = () => {
+        setPreview('');
+    };
+
     return (
         <div className='submit-post'>
+            <h2 className='submit-post__title--mobile'>Post a code snippet</h2>
             <form className='submit-post__form' onSubmit={(event) => handleOnSubmit(event)}>
                 <div className='submit-post__codes'>
                     <div className='submit-post__editor submit-post__editor--preview'>
-                    <label className='submit-post__form-title'>Preview</label>
                         <iframe id='preview' className='submit-post__editor-code submit-post__editor-code--preview' srcDoc={preview}></iframe>
                     </div>
                     <div className='submit-post__editor'>
@@ -85,6 +89,7 @@ const SubmitPost = () => {
                     </div>
                 </div>
                 <div className='submit-post__form-details'>
+                    <h2 className='submit-post__title submit-post__title--td'>Post a code snippet</h2>
                     <div className='submit-post__form-detail'>
                         <label className='submit-post__form-title' htmlFor='title'>Title</label>
                         <input className='submit-post__form-input' id='title' name='title'></input>
@@ -95,10 +100,10 @@ const SubmitPost = () => {
                     </div>
                     <div className='submit-post__form-detail'>
                         <label className='submit-post__form-title' htmlFor='file'>Thumbnail</label>
-                        <input type='file' id='file' name='file'></input>
+                        <input className='submit-post__file-input' type='file' id='file' name='file'></input>
                     </div>
                     <div className='submit-post__actions'>
-                        <button className='submit-post__post-button'>Cancel</button>
+                        <button className='submit-post__post-button' type='reset' onClick={handleReset}>Reset</button>
                         <button className='submit-post__post-button' type='submit'>Post</button>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 import { CommentsProps } from '../../interfaces';
-import comment from '../../assets/images/comment.png';
+import send from '../../assets/images/send.png';
 import Comment from '../Comment/Comment';
 import './Comments.scss';
 
@@ -16,7 +16,7 @@ const Comments: React.FC<CommentsProps> = ({ comments, submitComment }) => {
             <form className='comments__form' onSubmit={(event) => handleOnSubmit(event)}>
                 <textarea className='comments__input' name='comment'></textarea>
                 <button className='comments__button' type='submit'>
-                    <img className='comments__button-icon' src={comment} />
+                    <img className='comments__button-icon' src={send} />
                 </button>
             </form>
             <div className='comments__list'>
