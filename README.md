@@ -106,7 +106,7 @@ Unstyled sketches of the initial idea:
 
 **GET /posts**
 
-- Get all posts to show on feed
+- Get all posts
   
 Response: 
 ```
