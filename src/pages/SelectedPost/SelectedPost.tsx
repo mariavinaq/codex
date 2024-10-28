@@ -155,7 +155,7 @@ const SelectedPost = () => {
                                     id='html'
                                     name='html'
                                     className='selected-post__editor-code'
-                                    defaultValue={htmlCode}
+                                    defaultValue={htmlCode === '' ? '<!-- no html -->' : htmlCode}
                                     onKeyUp={(event) => setHtmlCode(event.currentTarget.value)}
                                 >
                                 </textarea>
@@ -169,7 +169,7 @@ const SelectedPost = () => {
                                     id='css'
                                     name='css'
                                     className='selected-post__editor-code'
-                                    defaultValue={cssCode}
+                                    defaultValue={cssCode === '' ? '/* no css */' : cssCode}
                                     onKeyUp={(event) => setCssCode(event.currentTarget.value)}
                                 >
                                 </textarea>
@@ -183,7 +183,7 @@ const SelectedPost = () => {
                                     id='js'
                                     name='js'
                                     className='selected-post__editor-code'
-                                    defaultValue={jsCode}
+                                    defaultValue={jsCode === '' ? '// no JS' : jsCode}
                                     onKeyUp={(event) => setJsCode(event.currentTarget.value)}
                                 >
                                 </textarea>

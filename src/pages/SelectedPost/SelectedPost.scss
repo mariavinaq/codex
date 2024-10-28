@@ -134,6 +134,10 @@
             font-size: 1.4rem;
         }
 
+        &:focus {
+            outline: none;
+        }
+
         &--preview {
             height: 40rem;
             padding: 0;
