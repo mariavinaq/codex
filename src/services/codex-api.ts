@@ -107,7 +107,7 @@ const postBookmark = async (reference: Reference) => {
     }
 };
 
-const getUser = async (userId: number) => {
+const getUser = async (userId: string) => {
     try {
         const response = await axios.get(`${baseUrl}/users/${userId}`);
         return response.data;
@@ -120,4 +120,17 @@ const getUser = async (userId: number) => {
     }
 };
 
-export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, getBookmarks, postBookmark, getUser };
+const getUserPosts = async (userId: string) => {
+    try {
+        const response = await axios.get(`${baseUrl}/users/${userId}/posts`);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: GET request for user posts failed`);
+        } else {
+            console.error('Error occurred while fetching user posts');
+        }
+    }
+};
+
+export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, getBookmarks, postBookmark, getUser, getUserPosts };

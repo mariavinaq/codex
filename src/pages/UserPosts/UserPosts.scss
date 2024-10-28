@@ -1,0 +1,38 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    &__title {
+        font-size: 1.75rem;
+        margin-bottom: 6rem;
+
+        @include tablet {
+            font-size: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        @include desktop {
+            font-size: 2.5rem;
+        }
+    }
+
+    &__list {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        gap: 1.25rem;
+        height: 50rem;
+
+        &--more {
+            height: 75rem;
+        }
+    }
+}

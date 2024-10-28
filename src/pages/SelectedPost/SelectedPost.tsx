@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { baseUrl, getComments, getPost, postComment, postBookmark, putLike } from '../../services/codex-api';
 import { agoTimestamp } from '../../utils/utils';
 import { Post, Comment } from '../../interfaces';
@@ -13,6 +13,7 @@ import toBookmark from '../../assets/images/to-bookmark.png';
 import './SelectedPost.scss';
 
 const SelectedPost = () => {
+    const navigate = useNavigate();
     const params = useParams<{ postId: string }>();
     const scrollRef = useRef<HTMLDivElement | null>(null);
     const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +26,7 @@ const SelectedPost = () => {
     const [incomingComment, setIncomingComment] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
     const [isBookmarked, setIsBookmarked] = useState(false);
+    const [postUserId, setUserId] = useState('');
 
     useEffect(() => {
         setIsLoading(true);
@@ -38,6 +40,7 @@ const SelectedPost = () => {
                 setLikesCount(post.likes)
                 setIsLoading(false);
                 setIsBookmarked(post.bookmarked);
+                setUserId(post.user_id);
             } else {
                 console.error("No postId provided");
             };
@@ -124,13 +127,17 @@ const SelectedPost = () => {
         }
     };
 
+    const handleClickUser = () => {
+        navigate(`/users/${postUserId}`)
+    };
+
     return (
         <>
             {isLoading ? <Loader /> : selectedPost && postComments &&
                 <div className='selected-post'>
                     <div className='selected-post__profile'>
-                        <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.avatar}`} />
-                        <p className='selected-post__username'>{selectedPost.username}</p>
+                        <img className='selected-post__avatar' src={`${baseUrl}${selectedPost.avatar}`}  onClick={handleClickUser}/>
+                        <p className='selected-post__username' onClick={handleClickUser}>{selectedPost.username}</p>
                         <time className='selected-post__timestamp'>• {agoTimestamp(selectedPost.timestamp)}</time>
                     </div>
                     <h1 className='selected-post__title'>{selectedPost.title}</h1>

@@ -18,6 +18,18 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
     const [likesCount, setLikesCount] = useState(post.likes);
     const [isBookmarked, setIsBookmarked] = useState(post.bookmarked);
 
+    useEffect(() => {
+        const retrieveComments = async () => {
+            if (post.id) {
+                const comments = await getComments(`${post.id}`);
+                if (comments) {
+                    setCommentsCount(comments.length)
+                }
+            } 
+        };
+        retrieveComments();
+    }, [post.id])
+
     const handleClickPost = () => {
         navigate(`/posts/${post.id}`)
     };
@@ -40,23 +52,15 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
         };
     };
 
-    useEffect(() => {
-        const retrieveComments = async () => {
-            if (post.id) {
-                const comments = await getComments(`${post.id}`);
-                if (comments) {
-                    setCommentsCount(comments.length)
-                }
-            } 
-        };
-        retrieveComments();
-    }, [post.id])
+    const handleClickUser = () => {
+        navigate(`/users/${post.user_id}`)
+    };
 
     return ( 
         <div className='feed-post'>
             <div className='feed-post__header'>
-                <img className='feed-post__avatar' src={`${baseUrl}${post.avatar}`} alt='user avatar' />
-                <p className='feed-post__username'>{post.username}</p>
+                <img className='feed-post__avatar' src={`${baseUrl}${post.avatar}`} alt='user avatar' onClick={handleClickUser} />
+                <p className='feed-post__username' onClick={handleClickUser}>{post.username}</p>
                 <time className='feed-post__timestamp'>• {agoTimestamp(post.timestamp)}</time>
             </div>
             <div className='feed-post__main' onClick={handleClickPost}>

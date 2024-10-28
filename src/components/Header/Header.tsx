@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState('')
     const [currentUserAvatar, setCurrentUserAvatar] = useState('')
-    const userId = 1;
+    const userId = '1';
 
     useEffect(() => {
         const retrieveUser = async () => {
@@ -35,6 +35,10 @@ const Header: React.FC = () => {
         navigate('/bookmarks');
     }
 
+    const handleClickUser = () => {
+        navigate(`/users/${userId}`)
+    };
+
     return (
         <header className='header'>
             <div className='header__logo-container' onClick={handleOnClickHome}>
@@ -49,8 +53,8 @@ const Header: React.FC = () => {
             <div className='header__user-pages'>
                 <img className='header__bookmark' src={bookmark} onClick={handleOnClickBookmarks}/>
                 <div className='header__profile'>
-                    <img className='header__avatar' src={currentUserAvatar} />
-                    <p className='header__username'>{currentUser}</p>
+                    <img className='header__avatar' src={currentUserAvatar} onClick={handleClickUser}/>
+                    <p className='header__username' onClick={handleClickUser}>{currentUser}</p>
                 </div>
             </div>
         </header>

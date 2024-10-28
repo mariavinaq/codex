@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { getBookmarks, } from '../../services/codex-api.ts';
 import { SimplePost } from '../../interfaces.ts';
 import FeedPost from '../../components/FeedPost/FeedPost';
-import './Bookmarks.scss';
 import NoBookmarks from '../../components/NoBookmarks/NoBookmarks.tsx';
+import './Bookmarks.scss';
 
 const Bookmarks = () => {
     const userId = '1';

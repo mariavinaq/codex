@@ -8,6 +8,7 @@ interface Post {
     js: string;
     likes: number;
     timestamp: Date;
+    user_id: number;
     username: string;
     avatar: string;
 }
@@ -15,6 +16,7 @@ interface Post {
 interface SimplePost {
     id: number,
     timestamp: Date,
+    user_id: number;
     username: number,
     title: string,
     thumbnail: string,
@@ -29,6 +31,7 @@ interface FeedPostProps {
 
 interface Comment {
     id: number;
+    user_id: number;
     username: string;
     avatar: string;
     timestamp: Date;
