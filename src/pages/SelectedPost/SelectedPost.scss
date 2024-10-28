@@ -152,6 +152,11 @@
         padding: 1rem 0;
         display: flex;
         gap: 1rem;
+        font-size: 1.3rem;
+
+        @include desktop {
+            font-size: 1.4rem;
+        }
     }
 
     &__action-button {
