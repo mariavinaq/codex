@@ -83,6 +83,10 @@ Codex aims to fill a perceived gap in the global developer community by offering
   - knex
   - multer
   - mysql2
+- Deployment:
+  - client: Netlify
+  - server: Heroku
+  - database: JawsDB  
 
 ### APIs
 
