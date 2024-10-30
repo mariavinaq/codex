@@ -120,16 +120,16 @@ Unstyled sketches of the initial idea:
 Response: 
 ```
 [
-        {
-        id: 1,
-        timestamp: "2024-10-14 00:00:01.000000",
-        title: "Smooth loading dots animation with CSS",
-        thumbnail: "/media/code-1.mov",
-        likes: 138,
-        user_id: 3,
-        username: lightersalmon,
-        avatar: '/avatars/avatar-3.svg'
-        bookmarked: 'null'
+    {
+      id: 1,
+      timestamp: "2024-10-14 00:00:01.000000",
+      title: "Smooth loading dots animation with CSS",
+      thumbnail: "/media/code-1.mov",
+      likes: 138,
+      user_id: 3,
+      username: lightersalmon,
+      avatar: '/avatars/avatar-3.svg'
+      bookmarked: 'null'
     },
     ...
 ]
@@ -284,16 +284,16 @@ Response:
 Response: 
 ```
 [
-        {
-        id: 1,
-        timestamp: "2024-10-14 00:00:01.000000",
-        title: "Smooth loading dots animation with CSS",
-        thumbnail: "/media/code-1.mov",
-        likes: 138,
-        user_id: 3,
-        username: lightersalmon,
-        avatar: '/avatars/avatar-3.svg',
-        bookmarked: 'null'
+    {
+      id: 1,
+      timestamp: "2024-10-14 00:00:01.000000",
+      title: "Smooth loading dots animation with CSS",
+      thumbnail: "/media/code-1.mov",
+      likes: 138,
+      user_id: 3,
+      username: lightersalmon,
+      avatar: '/avatars/avatar-3.svg',
+      bookmarked: 'null'
     },
     ...
 ]
@@ -308,16 +308,16 @@ Response:
 Response: 
 ```
 [
-        {
-        id: 1,
-        timestamp: "2024-10-14 00:00:01.000000",
-        title: "Smooth loading dots animation with CSS",
-        thumbnail: "/media/code-1.mov",
-        likes: 138,
-        user_id: 3,
-        username: lightersalmon,
-        avatar: '/avatars/avatar-3.svg',
-        bookmarked: 1
+    {
+      id: 1,
+      timestamp: "2024-10-14 00:00:01.000000",
+      title: "Smooth loading dots animation with CSS",
+      thumbnail: "/media/code-1.mov",
+      likes: 138,
+      user_id: 3,
+      username: lightersalmon,
+      avatar: '/avatars/avatar-3.svg',
+      bookmarked: 1
     },
     ...
 ]
@@ -357,7 +357,7 @@ A. Set up the server
    5. Create a new schema on MySQL Workbench using the same `DB_NAME` from `.env`
    6. In the terminal, use command `npm run migrate`
    7. Then, use command `npm run seed`
-   8. Then, use command run `npm start`
+   8. Then, use command `npm start`
    9. Server should now be successfully running
        
 B. Set up the client
