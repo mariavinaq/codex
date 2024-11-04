@@ -29,7 +29,14 @@
         flex-wrap: wrap;
         align-content: center;
         gap: 1.25rem;
-        height: 50rem;
+
+        @include tablet {
+            height: 100rem;
+        }
+
+        @include desktop {
+            height: 50rem;
+        }
 
         &--more {
             height: 75rem;
