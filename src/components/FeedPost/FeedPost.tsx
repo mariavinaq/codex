@@ -66,7 +66,7 @@ const FeedPost: React.FC<FeedPostProps> = ({ post }) => {
             <div className='feed-post__main' onClick={handleClickPost}>
                 <div className='feed-post__media-container'>
                     {
-                        useVideoTag ? <video className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} autoPlay muted loop></video>
+                        useVideoTag ? <video className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} autoPlay playsInline muted loop></video>
                             : <img className='feed-post__media' src={`${baseUrl}${post.thumbnail}`} />
                     }
                 </div>
