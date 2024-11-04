@@ -51,15 +51,11 @@
     }
 
     &__action {
-        width: 3rem;
+        width: 4rem;
         cursor: pointer;
 
         &:hover {
             filter: invert(22%) sepia(21%) saturate(3865%) hue-rotate(225deg) brightness(94%) contrast(97%);
-        }
-
-        @include tablet {
-            width: 4rem;
         }
 
         @include desktop {
