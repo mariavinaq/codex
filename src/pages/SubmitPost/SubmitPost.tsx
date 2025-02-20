@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './SubmitPost.scss';
 import { useNavigate } from 'react-router-dom';
-import { postPost } from '../../services/codex-api';
+import { postPost, postPrompt } from '../../services/codex-api';
 
 const SubmitPost = () => {
     const navigate = useNavigate();
@@ -9,6 +9,9 @@ const SubmitPost = () => {
     const [cssCode, setCssCode] = useState('');
     const [jsCode, setJsCode] = useState('');
     const [preview, setPreview] = useState('');
+    const [prompt, setPrompt] = useState('');
+    const [posting, setPosting] = useState(false);
+    const [fetchingAi, setFetchingAi] = useState(false);
 
     useEffect(() => {
         const previewSetup = `
@@ -33,15 +36,17 @@ const SubmitPost = () => {
 
         const post = await postPost(formData);
         if (post) {
-            alert('Code published. Click OK to return to homepage.');
+            setPosting(false);
             navigate('/');
         } else {
+            setPosting(false);
             alert('Code unsuccessfully published. Click OK to try again.');
         };
     };
 
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setPosting(true);
         submitPost(event);
     };
 
@@ -49,10 +54,26 @@ const SubmitPost = () => {
         setPreview('');
     };
 
+    const handleOnSubmitPrompt = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setFetchingAi(true);
+        const generated = await postPrompt({ prompt: prompt })
+        if (generated) {
+            setHtmlCode(generated['htmlCode']);
+            setCssCode(generated['cssCode']);
+            setJsCode(generated['jsCode']);
+            setFetchingAi(false);
+            window.scrollTo({ top: 0 });
+        } else {
+            alert("Try a new prompt");
+            setFetchingAi(false);
+        }
+    };
+
     return (
         <div className='submit-post'>
             <h2 className='submit-post__title--mobile'>Post a code snippet</h2>
-            <form className='submit-post__form' onSubmit={(event) => handleOnSubmit(event)}>
+            <div className='submit-post__container'>
                 <div className='submit-post__codes'>
                     <div className='submit-post__editor submit-post__editor--preview'>
                         <iframe id='preview' className='submit-post__editor-code submit-post__editor-code--preview' srcDoc={preview}></iframe>
@@ -63,7 +84,8 @@ const SubmitPost = () => {
                             id='html'
                             name='html'
                             className='submit-post__editor-code'
-                            onKeyUp={(event) => setHtmlCode(event.currentTarget.value)}
+                            value={htmlCode}
+                            onChange={(event) => setHtmlCode(event.currentTarget.value)}
                         >
                         </textarea>
                     </div>
@@ -73,7 +95,8 @@ const SubmitPost = () => {
                             id='css'
                             name='css'
                             className='submit-post__editor-code'
-                            onKeyUp={(event) => setCssCode(event.currentTarget.value)}
+                            value={cssCode}
+                            onChange={(event) => setCssCode(event.currentTarget.value)}
                         >
                         </textarea>
                     </div>
@@ -83,31 +106,39 @@ const SubmitPost = () => {
                             id='js'
                             name='js'
                             className='submit-post__editor-code'
-                            onKeyUp={(event) => setJsCode(event.currentTarget.value)}
+                            value={jsCode}
+                            onChange={(event) => setJsCode(event.currentTarget.value)}
                         >
                         </textarea>
                     </div>
                 </div>
-                <div className='submit-post__form-details'>
-                    <h2 className='submit-post__title submit-post__title--td'>Post a code snippet</h2>
-                    <div className='submit-post__form-detail'>
-                        <label className='submit-post__form-title' htmlFor='title'>Title</label>
-                        <input className='submit-post__form-input' id='title' name='title' required></input>
-                    </div>
-                    <div className='submit-post__form-detail'>
-                        <label className='submit-post__form-title' htmlFor='description'>Description</label>
-                        <textarea className='submit-post__form-input submit-post__form-input--description' id='description' name='description'></textarea>
-                    </div>
-                    <div className='submit-post__form-detail'>
-                        <label className='submit-post__form-title' htmlFor='file'>Thumbnail</label>
-                        <input className='submit-post__file-input' type='file' id='file' name='file' required></input>
-                    </div>
-                    <div className='submit-post__actions'>
-                        <button className='submit-post__post-button' type='reset' onClick={handleReset}>Reset</button>
-                        <button className='submit-post__post-button' type='submit'>Post</button>
-                    </div>
+                <div className='submit-post__forms'>
+                    <form className='submit-post__form' onSubmit={(event) => handleOnSubmit(event)}>
+                        <h2 className='submit-post__title submit-post__title--td'>Post a code snippet</h2>
+                        <div className='submit-post__form-detail'>
+                            <label className='submit-post__form-title' htmlFor='title'>Title</label>
+                            <input className='submit-post__form-input' id='title' name='title' required></input>
+                        </div>
+                        <div className='submit-post__form-detail'>
+                            <label className='submit-post__form-title' htmlFor='description'>Description</label>
+                            <textarea className='submit-post__form-input submit-post__form-input--description' id='description' name='description'></textarea>
+                        </div>
+                        <div className='submit-post__form-detail'>
+                            <label className='submit-post__form-title' htmlFor='file'>Thumbnail</label>
+                            <input className='submit-post__file-input' type='file' id='file' name='file' required></input>
+                        </div>
+                        <div className='submit-post__actions'>
+                            <button className='submit-post__post-button' type='reset' onClick={handleReset}>Reset</button>
+                            <button className='submit-post__post-button' type='submit' disabled={posting}>{posting ? 'Posting...' : 'Post'}</button>
+                        </div>
+                    </form>
+                    <form className='submit-post__prompter' onSubmit={(event) => handleOnSubmitPrompt(event)}>
+                        <label className='submit-post__form-title submit-post__form-title--prompter' htmlFor='prompt'>Generate code with AI</label>
+                        <input className='submit-post__form-input submit-post__form-input--prompter' id='prompt' name='prompt' value={prompt} onChange={(event) => setPrompt(event.target.value)}></input>
+                        <button className='submit-post__post-button submit-post__post-button--prompter' type='submit' disabled={fetchingAi}>{fetchingAi ? 'Wait for it...' : 'Go'}</button>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     );
 };

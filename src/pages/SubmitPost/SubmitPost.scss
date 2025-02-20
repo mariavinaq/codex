@@ -38,7 +38,7 @@
         }
     }
 
-    &__form {
+    &__container {
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
@@ -52,6 +52,10 @@
     &__form-title {
         font-size: 1.3rem;
         margin: 0.5rem 0 1rem;
+
+        &--prompter {
+            color: white;
+        }
 
         @include desktop {
             font-size: 1.5rem;
@@ -105,14 +109,16 @@
         }
     }
 
-    &__form-details {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
+    &__forms {
         @include tablet {
             width: 35%;
         }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     &__form-detail {
@@ -130,6 +136,12 @@
         &--description {
             height: 9rem;
             resize: none;
+        }
+
+        &--prompter {
+            background: transparent;
+            border-color: white;
+            color: white;
         }
 
         &:focus {
@@ -168,12 +180,47 @@
         font-size: 1.3rem;
         cursor: pointer;
 
+        &--prompter {
+            width: 100%;
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
         @include desktop {
             font-size: 1.5rem;
         }
 
         &:hover {
             transform: scale(1.025);
+        }
+    }
+
+    &__prompter {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        padding: 2rem;
+        border-radius: 1rem;
+        background: linear-gradient(45deg, #6366f1, #8b5cf6);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        animation: glow 2s ease-in-out infinite alternate;
+
+        @include tablet {
+            margin-top: 5.5rem;
+        }
+
+        @include desktop {
+            margin-top: 3rem;
+        }
+    }
+
+    @keyframes glow {
+        from {
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        to {
+          box-shadow: 0 0 30px rgba(99, 102, 241, 0.8);
         }
     }
 }

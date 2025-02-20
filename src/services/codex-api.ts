@@ -133,4 +133,17 @@ const getUserPosts = async (userId: string) => {
     }
 };
 
-export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, getBookmarks, postBookmark, getUser, getUserPosts };
+const postPrompt = async (prompt: {prompt:string}) => {
+    try {
+        const response = await axios.post(`${baseUrl}/prompt`, prompt)
+        return response.data.content[0].text;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error(`${error.response?.status}: POST request for prompt failed`);
+        } else {
+            console.error('Error occurred while prompting');
+        }
+    }
+}
+
+export { baseUrl, getPosts, getPost, postPost, putLike, getComments, postComment, getBookmarks, postBookmark, getUser, getUserPosts, postPrompt };
