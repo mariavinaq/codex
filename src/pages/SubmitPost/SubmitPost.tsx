@@ -135,7 +135,7 @@ const SubmitPost = () => {
                     <form className='submit-post__prompter' onSubmit={(event) => handleOnSubmitPrompt(event)}>
                         <label className='submit-post__form-title submit-post__form-title--prompter' htmlFor='prompt'>Generate code with AI</label>
                         <input className='submit-post__form-input submit-post__form-input--prompter' id='prompt' name='prompt' value={prompt} onChange={(event) => setPrompt(event.target.value)}></input>
-                        <button className='submit-post__post-button submit-post__post-button--prompter' type='submit' disabled={fetchingAi}>{fetchingAi ? 'Wait for it...' : 'Go'}</button>
+                        <button className={`submit-post__post-button submit-post__post-button--prompter submit-post__post-button--prompter${fetchingAi ? '-loading' : ''}`} type='submit' disabled={fetchingAi}>{fetchingAi ? 'Wait for it...' : 'Go'}</button>
                     </form>
                 </div>
             </div>
