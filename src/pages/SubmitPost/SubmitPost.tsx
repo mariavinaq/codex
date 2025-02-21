@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import './SubmitPost.scss';
 import { useNavigate } from 'react-router-dom';
 import { postPost, postPrompt } from '../../services/codex-api';
@@ -8,21 +8,19 @@ const SubmitPost = () => {
     const [htmlCode, setHtmlCode] = useState('');
     const [cssCode, setCssCode] = useState('');
     const [jsCode, setJsCode] = useState('');
-    const [preview, setPreview] = useState('');
     const [prompt, setPrompt] = useState('');
     const [posting, setPosting] = useState(false);
     const [fetchingAi, setFetchingAi] = useState(false);
 
-    useEffect(() => {
-        const previewSetup = `
+    const preview = useMemo(() => {
+        return `
             <html>
                 <body>${htmlCode}</body>
                 <style>${cssCode}</style>
                 <script>${jsCode}</script>
             </html>
-        `;
-        setPreview(previewSetup)
-    }, [htmlCode, cssCode, jsCode])
+        `}, [htmlCode, cssCode, jsCode]
+    );
 
     const submitPost = async (event: React.FormEvent<HTMLFormElement>) => {
         const form = event.target as HTMLFormElement;
@@ -51,7 +49,9 @@ const SubmitPost = () => {
     };
 
     const handleReset = () => {
-        setPreview('');
+        setHtmlCode('');
+        setCssCode('');
+        setJsCode('');
     };
 
     const handleOnSubmitPrompt = async (event: React.FormEvent<HTMLFormElement>) => {
