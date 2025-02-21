@@ -23,3 +23,17 @@
         @content;
     }
 }
+
+@mixin site-button {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 1.3rem;
+    cursor: pointer;
+
+    @include desktop {
+        font-size: 1.5rem;
+    }
+}
